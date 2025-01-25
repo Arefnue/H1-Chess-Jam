@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a18aa4f6d9d49c4ba0e920c28c2f252, type: 3}
+  m_Name: SheetDataExample
+  m_EditorClassIdentifier: 
+  foldoutImportGUI: 1
+  documentId: 1rAuSbcbvLpUE7dBTvNCvfImrBZJ6Y5cAb1u9UYdmSM4
+  selectedTogglesIds:
+  - examplePageList
+  - examplePageList2
+  foldoutSerializationGUI: 0
+  serializationOutputPath: ../../Configs
+  serializationFileName: Configs.v0.1
+  serializationTypes: 0
+  content:
+    examplePageList:
+    - stringExample: a text
+      intExample: 1
+      floatExample: 2.5
+      boolExample: 1
+    - stringExample: b text
+      intExample: 2
+      floatExample: 7.6
+      boolExample: 0
+    - stringExample: c text
+      intExample: 333
+      floatExample: 0.13
+      boolExample: 0
+    examplePageList2:
+    - stringExample: x text
+      intExample: 1
+      floatExample: 2.5
+      boolExample: 1
+    - stringExample: y text
+      intExample: 2
+      floatExample: 7.6
+      boolExample: 0
+    - stringExample: z text
+      intExample: 333
+      floatExample: 0.13
+      boolExample: 1

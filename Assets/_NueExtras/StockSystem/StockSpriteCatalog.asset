@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f96f5345d2417daae35de7825e4a03, type: 3}
+  m_Name: StockSpriteCatalog
+  m_EditorClassIdentifier: 
+  spriteList:
+  - {fileID: 21300000, guid: ade56b7149c6940ecbc3fe38cd065543, type: 3}
+  - {fileID: 21300000, guid: a15be1c5df2514c09833edbec3afd26b, type: 3}
+  - {fileID: 21300000, guid: 571e655c7ab4a4d7abd6f5e57b144596, type: 3}
+  - {fileID: 21300000, guid: 7e30376514d7c44acbc0f231178e446a, type: 3}
+  path: Assets/_NueExtras/StockSystem/Visuals

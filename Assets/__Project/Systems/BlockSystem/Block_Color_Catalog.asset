@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8032f1e28b424528bc8a73017f2380f4, type: 3}
+  m_Name: Block_Color_Catalog
+  m_EditorClassIdentifier: 
+  blockColorDict:
+    keyValuePairs:
+    - key: 0
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: f15186f84cdad9549bf5b10f6242b9c7, type: 3}
+        ColorMaterial: {fileID: 2100000, guid: 6b4413b6e11826e4ebd8a8aa8cfba0b7, type: 2}
+    - key: 1
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: d03871bb3b6be4c4db04000ba295dd73, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 2
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: 715c979a2cf7f4b408270f1cbdeea597, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 3
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: 28708efc22a68174fab0a49ece147f54, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 4
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: 992365d7c6efb17478b0077491d662bc, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 5
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: 88ac9abee730d474f8d8224e4b98d68f, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 6
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: f75b917496a1743419ee9880f5bf59eb, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 7
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: 1125d0587d1067144a5860b30e971b06, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 8
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: 87349a8e0b8728948bd978a66adf6da4, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 9
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: badca9e8b2dfb194bba35fe65aa289a0, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 10
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: aced1e1cc7b99ef448db11eadb94530e, type: 3}
+        ColorMaterial: {fileID: 0}
+    - key: 11
+      value:
+        BlockPrefab: {fileID: 4958410540289265501, guid: a832149c53b10df44816eaf2836bffd0, type: 3}
+        ColorMaterial: {fileID: 0}
+  prefabPath: Assets/__Project/Systems/BlockSystem/ColorBlocks
+  materialPath: Assets/__Project/Art/Materials/BucketMaterials

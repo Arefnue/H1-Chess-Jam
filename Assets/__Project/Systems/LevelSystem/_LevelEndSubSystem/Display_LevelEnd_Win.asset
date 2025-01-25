@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5a26847dea48ce9295b4d502666a19, type: 3}
+  m_Name: Display_LevelEnd_Win
+  m_EditorClassIdentifier: 
+  popupID: Display_LevelEnd_Win
+  popupPrefab: {fileID: 6400520275387003733, guid: 333b6d918d45d524d8373cf01de3cf1e, type: 3}
+  hideCloseButton: 0
