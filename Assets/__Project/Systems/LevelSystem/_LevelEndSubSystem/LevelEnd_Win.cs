@@ -25,10 +25,6 @@ namespace __Project.Systems.LevelSystem._LevelEndSubSystem
             StockStatic.SpawnStock(StockTypes.Coin, count,perValue);
             var text = reward + SpriteHelper.GetStockSpriteText(StockTypes.Coin);
             coinRewardText.SetText(coinRewardText.text.Replace("#reward", text));
-            var colorText = levelEndInfo.ColorReward + SpriteHelper.GetStockSpriteText(StockTypes.Gem);
-            colorRewardText.SetText(colorRewardText.text.Replace("#reward", colorText));
-            StockStatic.IncreaseStock(StockTypes.Gem,levelEndInfo.ColorReward);
-            
         }
     }
 }

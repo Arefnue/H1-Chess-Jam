@@ -48,18 +48,18 @@ namespace __Project.Systems.PowerUpSystem._Actions
                 return false;
             }
 
-            if (LevelStatic.CurrentLevel.BlockController.BlockList.Count<count)
-            {
-                return false;
-            }
-
-            var emptySlotCount = LevelStatic.CurrentLevel.BlockController.HoldRootList.FindAll(x => x.IsEmpty);
-
-            if (emptySlotCount.Count < count)
-            {
-                return false;
-            }
-           
+            // if (LevelStatic.CurrentLevel.BlockController.BlockList.Count<count)
+            // {
+            //     return false;
+            // }
+            //
+            // var emptySlotCount = LevelStatic.CurrentLevel.BlockController.HoldRootList.FindAll(x => x.IsEmpty);
+            //
+            // if (emptySlotCount.Count < count)
+            // {
+            //     return false;
+            // }
+            //
             if (!LevelStatic.IsInteractionEnabled.Value)
             {
                 return false;
@@ -70,9 +70,9 @@ namespace __Project.Systems.PowerUpSystem._Actions
 
         public override void Apply()
         {
-            var blockColors = LevelStatic.CurrentLevel.BlockController.BlockList.TakeLast(3).ToList();
-            RBuss.Publish(new MoreSpaceREvent(blockColors));
-            Button.UpdateButton();
+            // var blockColors = LevelStatic.CurrentLevel.BlockController.BlockList.TakeLast(3).ToList();
+            // RBuss.Publish(new MoreSpaceREvent(blockColors));
+            // Button.UpdateButton();
         }
     }
 }

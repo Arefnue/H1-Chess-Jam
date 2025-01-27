@@ -52,26 +52,26 @@ namespace __Project.Systems.PowerUpSystem._Actions
 
         public override void Apply()
         {
-            if (LevelStatic.CurrentLevel.GridController.ActiveLayer.TryGetComponent<GridLayer_Block>(out var blockLayer))
-            {
-                var step = LevelStatic.CurrentLevel.MissionController.ActiveMissionStep;
-                if (step.TryGetCurrentMission(out var missionInfo))
-                {
-                    var targetColor = missionInfo.targetColor;
-                    var blocks = blockLayer.ActiveBlockListRP.ToList();
-                    var items =blocks.FindAll(x =>
-                    {
-
-                        if (x.IsSpammed)
-                        {
-                            return false;
-                        }
-                        return x.ColorEnum == targetColor;
-                    }).Take(3).ToList();
-                    RBuss.Publish(new MagnetREvent(items));
-                    Button.UpdateButton();
-                }
-            }
+            // if (LevelStatic.CurrentLevel.GridController.ActiveLayer.TryGetComponent<GridLayer_Block>(out var blockLayer))
+            // {
+            //     var step = LevelStatic.CurrentLevel.MissionController.ActiveMissionStep;
+            //     if (step.TryGetCurrentMission(out var missionInfo))
+            //     {
+            //         var targetColor = missionInfo.targetColor;
+            //         var blocks = blockLayer.ActiveBlockListRP.ToList();
+            //         var items =blocks.FindAll(x =>
+            //         {
+            //
+            //             if (x.IsSpammed)
+            //             {
+            //                 return false;
+            //             }
+            //             return x.ColorEnum == targetColor;
+            //         }).Take(3).ToList();
+            //         RBuss.Publish(new MagnetREvent(items));
+            //         Button.UpdateButton();
+            //     }
+            // }
         }
         
         public override bool CanUse()
@@ -82,26 +82,26 @@ namespace __Project.Systems.PowerUpSystem._Actions
             {
                 return false;
             }
-            if (LevelStatic.CurrentLevel.GridController.ActiveLayer.TryGetComponent<GridLayer_Block>(out var blockLayer))
-            {
-                var step = LevelStatic.CurrentLevel.MissionController.ActiveMissionStep;
-                if (step.TryGetCurrentMission(out var missionInfo))
-                {
-                    "Magnet Check".NLog();
-                    var targetColor = missionInfo.targetColor;
-                    var blocks = blockLayer.ActiveBlockListRP;
-                    var ct = 0;
-                    foreach (var block in blocks)
-                    {
-                        if (block.ColorEnum != targetColor) continue;
-                        if (block.IsSpammed)
-                            continue;
-                        ct++;
-                        if (ct >= 3)
-                            return true;
-                    }
-                }
-            }
+            // if (LevelStatic.CurrentLevel.GridController.ActiveLayer.TryGetComponent<GridLayer_Block>(out var blockLayer))
+            // {
+            //     var step = LevelStatic.CurrentLevel.MissionController.ActiveMissionStep;
+            //     if (step.TryGetCurrentMission(out var missionInfo))
+            //     {
+            //         "Magnet Check".NLog();
+            //         var targetColor = missionInfo.targetColor;
+            //         var blocks = blockLayer.ActiveBlockListRP;
+            //         var ct = 0;
+            //         foreach (var block in blocks)
+            //         {
+            //             if (block.ColorEnum != targetColor) continue;
+            //             if (block.IsSpammed)
+            //                 continue;
+            //             ct++;
+            //             if (ct >= 3)
+            //                 return true;
+            //         }
+            //     }
+            // }
             return false;
         }
 

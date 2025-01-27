@@ -42,7 +42,6 @@ namespace __Project.Systems.LevelSystem
                     {
                         Level = ev.Level-1,
                         CoinReward = SpawnedLevel.CoinReward,
-                        ColorReward = SpawnedLevel.TotalColorReward,
                         OnContinueButtonClickedAction = LoadNextLevelWithFader
                     };
                     panel.Build(info);
@@ -61,7 +60,6 @@ namespace __Project.Systems.LevelSystem
                     {
                         Level = ev.Level,
                         CoinReward = SpawnedLevel.CoinReward,
-                        ColorReward = SpawnedLevel.TotalColorReward,
                         OnContinueButtonClickedAction = LoadNextLevelWithFader
                     };
                     panel.Build(info);
