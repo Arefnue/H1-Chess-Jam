@@ -24,18 +24,6 @@ namespace __Project.Systems.LevelSystem._MissionSubSystem
 
         #region Methods
 
-        public override void Shuffle()
-        {
-            base.Shuffle();
-            // var cellPositions = new List<Vector3>();
-            // foreach (var block in BlockList)
-            // {
-            //     block.transform.SetParent(null);
-            //     block.transform.SetParent(Root);
-            //     block.transform.localPosition = Vector3.zero;
-            // }
-        }
-
         public override void Build()
         {
             base.Build();

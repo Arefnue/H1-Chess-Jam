@@ -184,10 +184,6 @@ namespace __Project.Systems.BlockSystem
                 "Node is null".NLog(Color.red);
                 return true;
             }
-            if (!activeLayer.CheckPathToTopRow(node,out var path))
-            {
-                return false;
-            }
             return true;
         }
 

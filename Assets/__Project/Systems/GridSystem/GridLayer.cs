@@ -61,12 +61,6 @@ namespace __Project.Systems.GridSystem
         #endregion
 
         #region Methods
-
-        public virtual void Shuffle()
-        {
-            
-        }
-
         public virtual void AddTile(GridTileBase tile)
         {
             var cellPos = grid.LocalToCell(tile.transform.localPosition);
@@ -106,8 +100,6 @@ namespace __Project.Systems.GridSystem
             {
                 var ct =$"Key: {keyValue.Key} Value: {keyValue.Value.GetNodeName()}";
                 str.Append(ct);
-                if (CheckPathToTopRow(keyValue.Value, out var pathList))
-                    str.Append(" <> Has Path");
                 str.AppendLine();
             }
             str.NLog(Color.white);
@@ -117,45 +109,6 @@ namespace __Project.Systems.GridSystem
         #endregion
         
         #region Pathfinding
-        private BaseNodeTile GetExitNode()
-        {
-            var size = grid.cellSize;
-            var pos = new Vector3Int(Mathf.CeilToInt(gridMax.x / 2), (int)gridMax.y);
-            return GetNode(pos);
-        }
-        [Button,TabGroup("Editor")]
-        public void TestPath(GridTileBase tile)
-        {
-            var startNode = GetNode(tile.GetCellPosition());
-            var endNode = GetExitNode();
-            Debug.DrawLine(grid.transform.position + startNode.NodePosition + grid.cellSize / 2f,
-                grid.transform.position +endNode.NodePosition + grid.cellSize / 2f,
-                Color.red,
-                5.0f);
-            if (CheckPathToTopRow(GetNode(tile.GetCellPosition()), out var pathList))
-            {
-                foreach (var position in pathList)
-                {
-                    var startPos = grid.transform.position +startNode.GetNodePosition() + grid.cellSize/2f;
-                    var nextPos = grid.transform.position +position + grid.cellSize/2f;
-                    Debug.DrawLine(startPos, nextPos, Color.green, 5.0f);
-                    startNode = GetNode(position);
-                }
-            }
-        }
-        [Button,TabGroup("Editor")]
-        public bool CheckPathToTopRow(BaseNodeTile baseNodeTile,out List<Vector3Int> pathList)
-        {
-            var startNode = baseNodeTile;
-            var endNode = GetExitNode();
-            var path = PathHelper.TryGetPath(startNode.NodePosition,
-                endNode.NodePosition,
-                PathHelper.ConvertTileNodeToPathNoteDict(TileDict),
-                out pathList);
-            if (!path)
-                return false;
-            return true;
-        }
         public List<GridTileBase> GetNeighbours(GridTileBase tile)
         {
             //TODO Cache neighbours into tiles
