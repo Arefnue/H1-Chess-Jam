@@ -7,6 +7,10 @@ namespace __Project.Systems.ChessSystem._Grid
     {
         public bool IsPositionValid(Vector3Int nextPos)
         {
+            if (!TileDict.ContainsKey(nextPos))
+            {
+                return false;
+            }
             return true;
         }
     }

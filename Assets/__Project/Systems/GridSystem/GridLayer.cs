@@ -29,7 +29,7 @@ namespace __Project.Systems.GridSystem
         {
             TileDict.Clear();
             InitTiles();
-            FillEmptyTiles();
+            //FillEmptyTiles();
             Log();
         }
         private void InitTiles()
