@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.GridSystem;
 using DG.Tweening;
@@ -16,9 +17,12 @@ namespace __Project.Systems.ChessSystem._Pieces
 
         public abstract List<Vector3Int> FindAvailableTiles();
 
-        public void Build()
+        public void Build(GridLayer_Chess gridLayer)
         {
+            GridLayer = gridLayer;
+            PlaceOnTile(GridLayer.GetGridLocalPosition(transform.position));
             AvailableMoveList = new List<Vector3Int>();
+            FindAvailableTiles();
         }
         public void PlaceOnTile(Vector3Int pos)
         {
@@ -40,6 +44,20 @@ namespace __Project.Systems.ChessSystem._Pieces
             var targetPosition = GridLayer.GetNode(targetPos).GetNodePosition();
             OccupiedTilePosition = targetPos;
             transform.DOMove(targetPosition, 0.5f);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (GridLayer == null)
+            {
+                return;
+            }
+            foreach (var vector3Int in AvailableMoveList)
+            {
+                var worldPos = GridLayer.Grid.GetCellCenterLocal(vector3Int);
+                Gizmos.color = Color.green;
+                Gizmos.DrawSphere(worldPos, 0.5f);
+            }
         }
     }
 }

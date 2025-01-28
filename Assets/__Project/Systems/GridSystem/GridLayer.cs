@@ -122,6 +122,16 @@ namespace __Project.Systems.GridSystem
             return null;
         }
 
+        public Vector3Int GetGridLocalPosition(Vector3 localPos)
+        {
+            return grid.LocalToCell(localPos);
+        }
+        
+        public Vector3Int GetGridWorldPosition(Vector3 worldPos)
+        {
+            return grid.WorldToCell(worldPos);
+        }
+
         #endregion
         
         #region Editor
@@ -130,8 +140,6 @@ namespace __Project.Systems.GridSystem
         {
             if (grid == null)
             {
-                FindGrid();
-                //return;
             }
             Gizmos.color = Color.magenta;
             for (int x = (int)gridMin.x; x <= (int)gridMax.x; x++)
@@ -167,14 +175,8 @@ namespace __Project.Systems.GridSystem
                 allTileList.Add(tileBase);
         }
 
-        private void FindGrid()
-        {
-            grid = GetComponentInChildren<Grid>();
-        }
-
         public void SetEditor()
         {
-            FindGrid();
             FindTiles();
         }
 #endif
