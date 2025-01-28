@@ -19,6 +19,7 @@ namespace __Project.Systems.GridSystem
         [SerializeField,TabGroup("Debug"),ReadOnly] private List<NTileBase> allTileList = new List<NTileBase>();
         public GridLayerEnum GridLayerType => gridLayerType;
         public Grid Grid => grid;
+        public int SizeX => (int)gridMax.x - (int)gridMin.x;
         [ShowInInspector,ReadOnly,TabGroup("Debug")]public Dictionary<Vector3Int,NodeGeneric<TTile>> TileDict { get; private set; } =
             new Dictionary<Vector3Int, NodeGeneric<TTile>>();
         #endregion

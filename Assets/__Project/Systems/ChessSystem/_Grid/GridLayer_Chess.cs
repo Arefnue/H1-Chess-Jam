@@ -5,6 +5,9 @@ namespace __Project.Systems.ChessSystem._Grid
 {
     public class GridLayer_Chess : GridLayer<NTile_Chess>
     {
-        
+        public bool IsPositionValid(Vector3Int nextPos)
+        {
+            return true;
+        }
     }
 }
