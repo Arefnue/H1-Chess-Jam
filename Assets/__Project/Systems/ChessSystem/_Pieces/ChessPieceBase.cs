@@ -26,6 +26,11 @@ namespace __Project.Systems.ChessSystem._Pieces
             AvailableMoveList = new List<Vector3Int>();
         }
 
+        public List<Vector3Int> GetAvailableMoves()
+        {
+            return AvailableMoveList;
+        }
+
         public void UpdatePiece()
         {
             FindAvailableTiles();
