@@ -42,7 +42,7 @@ namespace __Project.Systems.GridSystem._PathSubSystem
 
             return neighbors;
         }
-        public static Dictionary<Vector3Int, BaseNode> ConvertTileNodeToPathNoteDict(Dictionary<Vector3Int,BaseNodeTile> dict)
+        public static Dictionary<Vector3Int, BaseNode> ConvertTileNodeToPathNoteDict(Dictionary<Vector3Int,BaseNode> dict)
         {
             var pathNodeDict = new Dictionary<Vector3Int, BaseNode>();
             foreach (var tileNode in dict)

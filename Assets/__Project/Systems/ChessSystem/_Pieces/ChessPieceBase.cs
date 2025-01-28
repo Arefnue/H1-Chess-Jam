@@ -6,13 +6,13 @@ namespace __Project.Systems.ChessSystem._Pieces
     public abstract class ChessPieceBase : MonoBehaviour
     {
         public Vector3Int CurrentPosition { get; private set; }
-        protected ChessTile CurrentTile { get; private set; }
+        protected NTile_Chess Current { get; private set; }
 
-        public void PlaceOnTile(ChessTile tile)
+        public void PlaceOnTile(NTile_Chess nTileBase)
         {
-            CurrentTile = tile;
-            CurrentPosition = tile.GetCellPosition();
-            transform.position = tile.transform.position;
+            Current = nTileBase;
+            CurrentPosition = nTileBase.GetCellPosition();
+            transform.position = nTileBase.transform.position;
         }
 
         public void ChangePosition(Vector3Int pos)

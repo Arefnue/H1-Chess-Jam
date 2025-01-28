@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Pieces
 {
-    public class ChessTile : TileBase
+    public class NTile_Chess : NTileBase
     {
+        [SerializeField] private ChessPieceBase chessPiece;
         
     }
 }

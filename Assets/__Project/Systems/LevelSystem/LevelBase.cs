@@ -15,7 +15,7 @@ namespace __Project.Systems.LevelSystem
     public class LevelBase : MonoBehaviour
     {
         [SerializeField,TabGroup("Settings")] private int coinReward = 4;
-        [SerializeField,TabGroup("References")] private GridController gridController;
+        [SerializeField,TabGroup("References")] private GridController_Chess gridController;
         [SerializeField,TabGroup("References")] private ChessController chessController;
        
         #region Cache
@@ -23,7 +23,7 @@ namespace __Project.Systems.LevelSystem
         private CancellationToken CancellationToken => gameObject.GetCancellationTokenOnDestroy();
         public int CoinReward => coinReward;
 
-        public GridController GridController => gridController;
+        public GridController_Chess GridController => gridController;
 
         public ChessController ChessController => chessController;
 

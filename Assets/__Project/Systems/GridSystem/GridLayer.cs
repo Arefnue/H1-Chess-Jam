@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace __Project.Systems.GridSystem
 {
-    public class GridLayer : MonoBehaviour
+    public abstract class GridLayer<TTile> : MonoBehaviour where TTile : NTileBase
     {
         [SerializeField,TabGroup("Settings")] private Grid grid;
         [SerializeField,TabGroup("Settings")] private GridLayerEnum gridLayerType;
@@ -16,11 +16,11 @@ namespace __Project.Systems.GridSystem
         [SerializeField,TabGroup("Settings")] private Vector2 gridMax = new Vector2(10, 10);
         
         #region Cache
-        [SerializeField,TabGroup("Debug"),ReadOnly] private List<GridTileBase> tileList = new List<GridTileBase>();
+        [SerializeField,TabGroup("Debug"),ReadOnly] private List<NTileBase> allTileList = new List<NTileBase>();
         public GridLayerEnum GridLayerType => gridLayerType;
         public Grid Grid => grid;
-        [ShowInInspector,ReadOnly,TabGroup("Debug")]public Dictionary<Vector3Int,BaseNodeTile> TileDict { get; private set; } =
-            new Dictionary<Vector3Int, BaseNodeTile>();
+        [ShowInInspector,ReadOnly,TabGroup("Debug")]public Dictionary<Vector3Int,NodeGeneric<TTile>> TileDict { get; private set; } =
+            new Dictionary<Vector3Int, NodeGeneric<TTile>>();
         #endregion
 
         #region Setup
@@ -33,14 +33,14 @@ namespace __Project.Systems.GridSystem
         }
         private void InitTiles()
         {
-            foreach (var tile in tileList)
+            foreach (var tile in allTileList)
             {
                 var cellPos = grid.LocalToCell(tile.transform.localPosition);
-                tile.Build(this);
+                tile.Build();
                 tile.SetCellPosition(cellPos);
                 // tile.SnapToCellWorld(grid.GetCellCenterWorld(cellPos));
-                var tileNode = new BaseNodeTile(cellPos);
-                tileNode.SetGridTile(tile);
+                var tileNode = new NodeGeneric<TTile>(cellPos);
+                tileNode.SetGridTile(tile as TTile);
                 TileDict.Add(cellPos, tileNode);
             }
         }
@@ -53,7 +53,8 @@ namespace __Project.Systems.GridSystem
                     var cellPos = new Vector3Int(x, y, 0);
                     if (TileDict.ContainsKey(cellPos))
                         continue;
-                    var tileNode = new Empty(cellPos);
+                    var tileNode = new NodeGeneric<TTile>(cellPos);
+                    tileNode.SetGridTile(null);
                     TileDict.Add(cellPos, tileNode);
                 }
             }
@@ -61,25 +62,26 @@ namespace __Project.Systems.GridSystem
         #endregion
 
         #region Methods
-        public virtual void AddTile(GridTileBase tile)
+        public virtual void AddTile(TTile nTileBase)
         {
-            var cellPos = grid.LocalToCell(tile.transform.localPosition);
-            tile.Build(this);
-            tile.SetCellPosition(cellPos);
-            var tileNode = new BaseNodeTile(cellPos);
-            tileNode.SetGridTile(tile);
+            var cellPos = grid.LocalToCell(nTileBase.transform.localPosition);
+            nTileBase.Build();
+            nTileBase.SetCellPosition(cellPos);
+            var tileNode = new NodeGeneric<TTile>(cellPos);
+            tileNode.SetGridTile(nTileBase);
             if (TileDict.ContainsKey(cellPos))
                 TileDict[cellPos] = tileNode;
             else
                 TileDict.Add(cellPos, tileNode);
         }
         
-        public virtual void RemoveTile(GridTileBase tile)
+        public virtual void RemoveTile(TTile nTileBase)
         {
-            var cellPos = tile.GetCellPosition();
+            var cellPos = nTileBase.GetCellPosition();
             if (TileDict.ContainsKey(cellPos))
             {
-                var tileNode = new Empty(cellPos);
+                var tileNode = new NodeGeneric<TTile>(cellPos);
+                tileNode.SetGridTile(null);
                 TileDict[cellPos] = tileNode;
             }
         }
@@ -107,48 +109,9 @@ namespace __Project.Systems.GridSystem
 
 
         #endregion
-        
-        #region Pathfinding
-        public List<GridTileBase> GetNeighbours(GridTileBase tile)
-        {
-            //TODO Cache neighbours into tiles
-            var neighbours = new List<GridTileBase>();
-            var directions = new[]
-            {
-                new Vector3Int(-1, 0, 0), // left
-                new Vector3Int(1, 0, 0), // right
-                new Vector3Int(0, 1, 0), // up
-                new Vector3Int(0, -1, 0) // down
-            };
-
-            foreach (var direction in directions)
-            {
-                var neighbourTile = GetTile(tile.GetCellPosition() + direction);
-                if (neighbourTile != null)
-                {
-                    neighbours.Add(neighbourTile);
-                }
-            }
-
-            return neighbours;
-        }
-        public List<GridTileBase> GetNeighbours(Vector3Int cellPos)
-        {
-            return GetNeighbours(GetTile(cellPos));
-        }
-        public List<GridTileBase> GetNeighbours(Vector3 worldPos)
-        {
-            return GetNeighbours(GetTile(worldPos));
-        }
-        public List<GridTileBase> GetNeighbours(int x, int y)
-        {
-            return GetNeighbours(new Vector3Int(x, y, 0));
-        }
-        #endregion
 
         #region Tile
-
-        public BaseNodeTile GetNode(Vector3Int cellPos)
+        public NodeGeneric<TTile> GetNode(Vector3Int cellPos)
         {
             if (TileDict.ContainsKey(cellPos))
             {
@@ -156,55 +119,7 @@ namespace __Project.Systems.GridSystem
             }
             return null;
         }
-        
-        public BaseNodeTile GetNode(Vector3 worldPos)
-        {
-            var cellPos = grid.WorldToCell(worldPos);
-            return GetNode(cellPos);
-        }
-        
-        public GridTileBase GetTile(Vector3Int cellPos)
-        {
-            if (TileDict.ContainsKey(cellPos))
-            {
-                return TileDict[cellPos].GridTile;
-            }
-            return null;
-        }
-        
-        public GridTileBase GetTile(Vector3 worldPos)
-        {
-            var cellPos = grid.WorldToCell(worldPos);
-            return GetTile(cellPos);
-        }
-        
-        public void SetTile(Vector3Int cellPos, GridTileBase tile)
-        {
-            if (TileDict.ContainsKey(cellPos))
-            {
-                TileDict[cellPos].SetGridTile(tile);
-            }
-        }
-        
-        public void SetTile(Vector3 worldPos, GridTileBase tile)
-        {
-            var cellPos = grid.WorldToCell(worldPos);
-            SetTile(cellPos, tile);
-        }
-        
-        public void RemoveTile(Vector3Int cellPos)
-        {
-            if (TileDict.ContainsKey(cellPos))
-            {
-                TileDict[cellPos] = null;
-            }
-        }
-        
-        public void RemoveTile(Vector3 worldPos)
-        {
-            var cellPos = grid.WorldToCell(worldPos);
-            RemoveTile(cellPos);
-        }
+
         #endregion
         
         #region Editor
@@ -244,10 +159,10 @@ namespace __Project.Systems.GridSystem
         [Button,TabGroup("Editor")]
         public virtual void FindTiles()
         {
-            tileList.Clear();
-            var c = GetComponentsInChildren<GridTileBase>();
+            allTileList.Clear();
+            var c = GetComponentsInChildren<NTileBase>();
             foreach (var tileBase in c)
-                tileList.Add(tileBase);
+                allTileList.Add(tileBase);
         }
 
         private void FindGrid()

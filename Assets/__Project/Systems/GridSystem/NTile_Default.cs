@@ -2,7 +2,7 @@
 
 namespace __Project.Systems.GridSystem
 {
-    public class GridTile_Default : GridTileBase
+    public class NTile_Default : NTileBase
     {
         
     }

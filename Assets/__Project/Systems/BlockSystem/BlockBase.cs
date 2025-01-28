@@ -176,7 +176,7 @@ namespace __Project.Systems.BlockSystem
                 return false;
             }
             var activeLayer = level.GridController.ActiveLayer;
-            if (!gameObject.TryGetComponent<GridTileBase>(out var tile))
+            if (!gameObject.TryGetComponent<NTileBase>(out var tile))
                 return true;
             var node = activeLayer.GetNode(tile.GetCellPosition());
             if (node == null)

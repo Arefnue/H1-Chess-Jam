@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace __Project.Systems.LevelSystem._MissionSubSystem
 {
-    public class GridLayer_Block : GridLayer
+    public class GridLayer_Block : GridLayer<NTile_Default>
     {
         [SerializeField] private Transform root;
         [SerializeField] private List<BlockBase> blockList = new List<BlockBase>();
@@ -41,7 +41,7 @@ namespace __Project.Systems.LevelSystem._MissionSubSystem
             {
                 if (LevelStatic.CurrentLevel.GridController.ActiveLayer != this)
                     return;
-                if (ev.Block.TryGetComponent<GridTileBase>(out var tile))
+                if (ev.Block.TryGetComponent<NTile_Default>(out var tile))
                 {
                     if (ev.Block.TryGetComponent<BlockColor>(out var colorBlock))
                         ActiveBlockListRP.Remove(colorBlock);
@@ -54,7 +54,7 @@ namespace __Project.Systems.LevelSystem._MissionSubSystem
             {
                 if (LevelStatic.CurrentLevel.GridController.ActiveLayer != this)
                     return;
-                if (ev.BlockColor.TryGetComponent<GridTileBase>(out var tile))
+                if (ev.BlockColor.TryGetComponent<NTile_Default>(out var tile))
                 {
                     if (ev.BlockColor.TryGetComponent<BlockColor>(out var colorBlock))
                         ActiveBlockListRP.Add(colorBlock);
@@ -66,7 +66,7 @@ namespace __Project.Systems.LevelSystem._MissionSubSystem
             {
                 if (LevelStatic.CurrentLevel.GridController.ActiveLayer != this)
                     return;
-                if (ev.Block.TryGetComponent<GridTileBase>(out var tile))
+                if (ev.Block.TryGetComponent<NTile_Default>(out var tile))
                 {
                     if (ev.Block.TryGetComponent<BlockColor>(out var colorBlock))
                         ActiveBlockListRP.Add(colorBlock);
