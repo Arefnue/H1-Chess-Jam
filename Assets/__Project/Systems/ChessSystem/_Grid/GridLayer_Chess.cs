@@ -35,6 +35,13 @@ namespace __Project.Systems.ChessSystem._Grid
                 pieceBase.UpdatePiece();
         }
 
+        public override void UpdateLayer()
+        {
+            base.UpdateLayer();
+            foreach (var pieceBase in PieceList)
+                pieceBase.UpdatePiece();
+        }
+
         #endregion
         
         #region Methods

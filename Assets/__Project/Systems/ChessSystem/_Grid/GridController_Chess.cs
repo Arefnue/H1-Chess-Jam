@@ -4,7 +4,9 @@ using __Project.Systems.ChessSystem._Utils;
 using __Project.Systems.GridSystem;
 using __Project.Systems.LevelSystem;
 using _NueCore.Common.NueLogger;
+using _NueCore.Common.ReactiveUtils;
 using _NueCore.Common.Utility;
+using UniRx;
 using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Grid
@@ -12,8 +14,15 @@ namespace __Project.Systems.ChessSystem._Grid
     public class GridController_Chess : GridController<NTile_Chess>
     {
         [SerializeField] private LayerMask pieceLayer;
-        [SerializeField] private LayerMask highlightLayer;
-        
+
+        private void Awake()
+        {
+            RBuss.OnEvent<ChessREvents.PieceMovedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
+            {
+                ActiveLayer.UpdateLayer();
+            });
+        }
+
         private void Update()
         {
             if (!LevelStatic.CurrentLevel)
@@ -28,38 +37,35 @@ namespace __Project.Systems.ChessSystem._Grid
 
             if (Input.GetMouseButtonDown(0))
             {
-                var ray = CameraStatic.GetMouseRay();
-                "Click".NLog();
-                if (CastHelper.TryRayCast(out var hit,ray,1000,pieceLayer))
-                {
-                    "X".NLog();
-                    if (hit.collider.attachedRigidbody.gameObject.TryGetComponent<ChessPieceBase>(out var piece))
-                    {
-                        "A".NLog();
-                        var chessLayer =ActiveLayer as GridLayer_Chess;
-                        if (chessLayer)
-                        {
-                            "Chess selected".NLog();
-                            chessLayer.DeselectPiece();
-                            chessLayer.SelectPiece(piece.OccupiedTilePosition);
-                        }
-                    }
-                }
-
-                if (CastHelper.TryRayCast(out var hit2,ray,1000,highlightLayer))
-                {
-                    if (hit2.collider.attachedRigidbody.gameObject.TryGetComponent<SelectorHighlight>(out var highlight))
-                    {
-                        var chessLayer =ActiveLayer as GridLayer_Chess;
-                        if (chessLayer)
-                        {
-                            "Highlight selected".NLog();
-                            chessLayer.MoveSelectedPiece(highlight.Position);
-                        }
-                    }
-                }
+                Cast();
             }
            
+        }
+
+        private void Cast()
+        {
+            var ray = CameraStatic.GetMouseRay();
+            if (CastHelper.TryRayCast(out var hit,ray,1000,pieceLayer))
+            {
+                var ht = hit.collider.attachedRigidbody;
+                var chessLayer =ActiveLayer as GridLayer_Chess;
+                if (chessLayer == null)
+                {
+                    return;
+                }
+                if (ht.TryGetComponent<ChessPieceBase>(out var piece))
+                {
+                    chessLayer.DeselectPiece();
+                    chessLayer.SelectPiece(piece.OccupiedTilePosition);
+                    return;
+                }
+                
+                if (ht.TryGetComponent<SelectorHighlight>(out var highlight))
+                {
+                    chessLayer.MoveSelectedPiece(highlight.Position);
+                }
+                    
+            }
         }
     }
 }

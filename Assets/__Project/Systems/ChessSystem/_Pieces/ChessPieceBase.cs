@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.GridSystem;
+using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
 using NUnit.Framework;
 using Sirenix.OdinInspector;
@@ -60,6 +61,7 @@ namespace __Project.Systems.ChessSystem._Pieces
             {
                 PlaceOnTile(targetPos);
                 UpdatePiece();
+                RBuss.Publish(new ChessREvents.PieceMovedREvent(this));
             });
         }
 
