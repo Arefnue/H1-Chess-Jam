@@ -29,10 +29,11 @@ namespace __Project.Systems.ChessSystem._Pieces
                     {
                         break;
                     }
-                    AvailableMoveList.Add(nextPos);
-                    nextPos += direction;
                     if (GridLayer.IsPositionOccupied(nextPos))
                         break;
+                    AvailableMoveList.Add(nextPos);
+                    nextPos += direction;
+                   
 
                 }
             }

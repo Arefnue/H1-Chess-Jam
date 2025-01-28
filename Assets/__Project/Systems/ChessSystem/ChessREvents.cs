@@ -5,10 +5,18 @@ namespace __Project.Systems.ChessSystem
 {
     public abstract class ChessREvents
     {
-        public class PieceMovedREvent : REvent
+        public class PieceMoveStartedREvent : REvent
         {
             public ChessPieceBase Piece { get; private set; }
-            public PieceMovedREvent(ChessPieceBase piece)
+            public PieceMoveStartedREvent(ChessPieceBase piece)
+            {
+                Piece = piece;
+            }
+        }
+        public class PieceMoveFinishedREvent : REvent
+        {
+            public ChessPieceBase Piece { get; private set; }
+            public PieceMoveFinishedREvent(ChessPieceBase piece)
             {
                 Piece = piece;
             }

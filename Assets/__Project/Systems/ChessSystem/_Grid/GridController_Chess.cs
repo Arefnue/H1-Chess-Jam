@@ -17,7 +17,12 @@ namespace __Project.Systems.ChessSystem._Grid
 
         private void Awake()
         {
-            RBuss.OnEvent<ChessREvents.PieceMovedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
+            RBuss.OnEvent<ChessREvents.PieceMoveFinishedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
+            {
+                ActiveLayer.UpdateLayer();
+            });
+            
+            RBuss.OnEvent<ChessREvents.PieceMoveStartedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
             {
                 ActiveLayer.UpdateLayer();
             });

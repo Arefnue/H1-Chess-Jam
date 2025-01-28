@@ -57,11 +57,12 @@ namespace __Project.Systems.ChessSystem._Pieces
             OccupiedTilePosition = targetPos;
             var finalDest = GridLayer.Grid.GetCellCenterLocal(targetPosition);
             finalDest.y = 0;
+            RBuss.Publish(new ChessREvents.PieceMoveStartedREvent(this));
             transform.DOJump(finalDest,2,1, 0.5f).OnComplete(() =>
             {
                 PlaceOnTile(targetPos);
                 UpdatePiece();
-                RBuss.Publish(new ChessREvents.PieceMovedREvent(this));
+                RBuss.Publish(new ChessREvents.PieceMoveFinishedREvent(this));
             });
         }
 
