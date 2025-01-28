@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Pieces
 {
-    public abstract class ChessPieceBase : MonoBehaviour
+    public class ChessPieceBase : MonoBehaviour
     {
         public Vector3Int CurrentPosition { get; private set; }
         protected NTile_Chess Current { get; private set; }
@@ -21,6 +21,9 @@ namespace __Project.Systems.ChessSystem._Pieces
             CurrentPosition = pos;
         }
 
-        public abstract void Move(Vector3Int newPosition);
+        public virtual void Move(Vector3Int newPosition)
+        {
+            
+        }
     }
 }

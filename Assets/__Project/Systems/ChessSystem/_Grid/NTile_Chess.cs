@@ -6,7 +6,5 @@ namespace __Project.Systems.ChessSystem._Grid
 {
     public class NTile_Chess : NTileBase
     {
-        [SerializeField] private ChessPieceBase chessPiece;
-        
     }
 }
