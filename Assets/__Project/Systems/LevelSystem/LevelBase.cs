@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using __Project.Systems.BlockSystem;
+using __Project.Systems.ChessSystem._Pieces;
 using __Project.Systems.GridSystem;
 using __Project.Systems.LevelSystem._MissionSubSystem;
 using _NueCore.Common.ReactiveUtils;
@@ -15,6 +16,7 @@ namespace __Project.Systems.LevelSystem
     {
         [SerializeField,TabGroup("Settings")] private int coinReward = 4;
         [SerializeField,TabGroup("References")] private GridController gridController;
+        [SerializeField,TabGroup("References")] private ChessController chessController;
        
         #region Cache
         public int TargetLevel { get; private set; }
@@ -22,7 +24,9 @@ namespace __Project.Systems.LevelSystem
         public int CoinReward => coinReward;
 
         public GridController GridController => gridController;
-        
+
+        public ChessController ChessController => chessController;
+
         #endregion
 
         #region Setup
@@ -31,7 +35,8 @@ namespace __Project.Systems.LevelSystem
             TargetLevel = targetLevel;
             LevelStatic.SetCurrentLevel(this);
             LevelStatic.IsInteractionEnabled.Value = true;
-            GridController.Build(this);
+            GridController.Build();
+            ChessController.Build();
             RegisterREvents();
             CheckMissionSteps();
         }
@@ -67,15 +72,15 @@ namespace __Project.Systems.LevelSystem
         private async UniTask ProcessStepAsync()
         {
             LevelStatic.IsInteractionEnabled.Value = false;
-            // if (MissionController.IsAllStepsCompleted())
-            // {
-            //     await FinishLevelAsync();
-            //     return;
-            // }
-            //
+            if (ChessController.IsAllStepsCompleted())
+            {
+                await FinishLevelAsync();
+                return;
+            }
+            
             //TODO activate grid layer
-          
-            // await UniTask.WhenAll(MissionController.AdjustImageAsync(), GridController.MoveGridLayersAsync(MissionController.CompletedStepCount));
+            
+            await UniTask.WhenAll(GridController.MoveGridLayersAsync(ChessController.ActiveStepCount));
             LevelStatic.IsInteractionEnabled.Value = true;
             //TODO check faces
             GridController.ActiveLayer.UpdateLayer();

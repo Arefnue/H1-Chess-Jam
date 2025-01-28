@@ -6,9 +6,9 @@ namespace __Project.Systems.ChessSystem._Pieces
     public abstract class ChessPieceBase : MonoBehaviour
     {
         public Vector3Int CurrentPosition { get; private set; }
-        protected GridTileBase CurrentTile { get; private set; }
+        protected ChessTile CurrentTile { get; private set; }
 
-        public void PlaceOnTile(GridTileBase tile)
+        public void PlaceOnTile(ChessTile tile)
         {
             CurrentTile = tile;
             CurrentPosition = tile.GetCellPosition();
