@@ -26,23 +26,20 @@ namespace __Project.Systems.ChessSystem._Grid
             {
                 return false;
             }
-
-            if (!IsPositionOccupied(nextPos)) 
-                return false;
             return true;
         }
 
-        private bool IsPositionOccupied(Vector3Int nextPos)
+        public bool IsPositionOccupied(Vector3Int nextPos)
         {
             foreach (var pieceBase in pieceList)
             {
                 if (nextPos == pieceBase.OccupiedTilePosition)
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
 #if UNITY_EDITOR

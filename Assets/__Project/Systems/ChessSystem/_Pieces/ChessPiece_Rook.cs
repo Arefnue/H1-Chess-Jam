@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _NueCore.Common.NueLogger;
 using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Pieces
@@ -15,16 +16,15 @@ namespace __Project.Systems.ChessSystem._Pieces
                 var nextPos = OccupiedTilePosition + direction;
                 while (GridLayer.IsPositionOnGrid(nextPos))
                 {
-                    if (GridLayer.GetNode(nextPos).GetIsWalkable())
+                    if (!GridLayer.GetNode(nextPos).GetIsWalkable())
                     {
-                        if (GridLayer.GetNode(nextPos).NTileBase)
-                        {
-                            AvailableMoveList.Add(nextPos);
-                        }
                         break;
                     }
                     AvailableMoveList.Add(nextPos);
                     nextPos += direction;
+                    if (GridLayer.IsPositionOccupied(nextPos))
+                        break;
+
                 }
             }
 

@@ -17,14 +17,12 @@ namespace __Project.Systems.GridSystem._PathSubSystem
 
         public override bool GetIsWalkable()
         {
-            if (!NTileBase)
+            if (NTileBase)
             {
-                "Tile empty".NLog();
-                return false;
+                if (!NTileBase.IsWalkable())
+                    return false;
             }
             
-            if (!NTileBase.IsWalkable())
-                return false;
             return base.GetIsWalkable();
         }
 

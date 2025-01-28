@@ -17,7 +17,6 @@ namespace __Project.Systems.GridSystem
 
         public virtual bool IsWalkable()
         {
-            "Base".NLog();
             return true;
         }
         public Vector3Int GetCellPosition()

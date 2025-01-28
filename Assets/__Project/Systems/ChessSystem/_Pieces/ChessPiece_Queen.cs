@@ -5,16 +5,16 @@ namespace __Project.Systems.ChessSystem._Pieces
 {
     public class ChessPiece_Queen : ChessPieceBase
     {
-        private Vector2Int[] directions = new Vector2Int[]
+        private Vector3Int[] directions = new Vector3Int[]
         {
-            Vector2Int.left,
-            Vector2Int.up,
-            Vector2Int.right,
-            Vector2Int.down,
-            new Vector2Int(1, 1),
-            new Vector2Int(1, -1),
-            new Vector2Int(-1, 1),
-            new Vector2Int(-1,- 1),
+            Vector3Int.left,
+            Vector3Int.up,
+            Vector3Int.right,
+            Vector3Int.down,
+            new Vector3Int(1, 1),
+            new Vector3Int(1, -1),
+            new Vector3Int(-1, 1),
+            new Vector3Int(-1,- 1),
         };
 
         public override List<Vector3Int> FindAvailableTiles()
@@ -22,20 +22,18 @@ namespace __Project.Systems.ChessSystem._Pieces
             AvailableMoveList.Clear();
             foreach (var direction in directions)
             {
-                var nextPos = OccupiedTilePosition + new Vector3Int(direction.x, direction.y, 0);
+                var nextPos = OccupiedTilePosition + direction;
                 while (GridLayer.IsPositionOnGrid(nextPos))
                 {
-                    var nextNode = GridLayer.GetNode(nextPos);
-                    if (nextNode.GetIsWalkable())
+                    if (!GridLayer.GetNode(nextPos).GetIsWalkable())
                     {
-                        if (nextNode.NTileBase)
-                        {
-                            AvailableMoveList.Add(nextPos);
-                        }
                         break;
                     }
                     AvailableMoveList.Add(nextPos);
-                    nextPos += new Vector3Int(direction.x, direction.y, 0);
+                    nextPos += direction;
+                    if (GridLayer.IsPositionOccupied(nextPos))
+                        break;
+
                 }
             }
 

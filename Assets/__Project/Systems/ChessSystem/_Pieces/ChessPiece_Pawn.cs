@@ -24,9 +24,10 @@ namespace __Project.Systems.ChessSystem._Pieces
                 var nextPos = OccupiedTilePosition + new Vector3Int(direction.x, direction.y, 0);
                 while (GridLayer.IsPositionOnGrid(nextPos))
                 {
-                    if (GridLayer.GetNode(nextPos).GetIsWalkable())
+                    var nextNode = GridLayer.GetNode(nextPos);
+                    if (nextNode.GetIsWalkable())
                     {
-                        if (GridLayer.GetNode(nextPos).NTileBase)
+                        if (nextNode.NTileBase)
                         {
                             AvailableMoveList.Add(nextPos);
                         }
