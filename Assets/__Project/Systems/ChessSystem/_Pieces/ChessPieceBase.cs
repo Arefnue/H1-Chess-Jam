@@ -1,4 +1,5 @@
-﻿using __Project.Systems.GridSystem;
+﻿using __Project.Systems.ChessSystem._Grid;
+using __Project.Systems.GridSystem;
 using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Pieces

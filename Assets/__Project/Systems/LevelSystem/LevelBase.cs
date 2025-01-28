@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using __Project.Systems.BlockSystem;
+using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.ChessSystem._Pieces;
 using __Project.Systems.GridSystem;
 using __Project.Systems.LevelSystem._MissionSubSystem;
@@ -77,10 +78,10 @@ namespace __Project.Systems.LevelSystem
                 await FinishLevelAsync();
                 return;
             }
-            
+            var index = ChessController.ActiveStepCount;
             //TODO activate grid layer
-            
-            await UniTask.WhenAll(GridController.MoveGridLayersAsync(ChessController.ActiveStepCount));
+            GridController.SetActiveLayer(index);
+            await UniTask.WhenAll(GridController.MoveGridLayersAsync(index));
             LevelStatic.IsInteractionEnabled.Value = true;
             //TODO check faces
             GridController.ActiveLayer.UpdateLayer();

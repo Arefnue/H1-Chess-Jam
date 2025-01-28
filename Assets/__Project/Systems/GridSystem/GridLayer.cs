@@ -62,6 +62,7 @@ namespace __Project.Systems.GridSystem
         #endregion
 
         #region Methods
+        [Button,TabGroup("Editor")]
         public virtual void AddTile(TTile nTileBase)
         {
             var cellPos = grid.LocalToCell(nTileBase.transform.localPosition);
@@ -74,7 +75,7 @@ namespace __Project.Systems.GridSystem
             else
                 TileDict.Add(cellPos, tileNode);
         }
-        
+        [Button,TabGroup("Editor")]
         public virtual void RemoveTile(TTile nTileBase)
         {
             var cellPos = nTileBase.GetCellPosition();

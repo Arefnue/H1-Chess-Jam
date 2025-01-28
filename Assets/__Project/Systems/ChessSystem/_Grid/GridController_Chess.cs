@@ -1,7 +1,6 @@
 ﻿using __Project.Systems.GridSystem;
-using UnityEngine;
 
-namespace __Project.Systems.ChessSystem._Pieces
+namespace __Project.Systems.ChessSystem._Grid
 {
     public class GridController_Chess : GridController<NTile_Chess>
     {
