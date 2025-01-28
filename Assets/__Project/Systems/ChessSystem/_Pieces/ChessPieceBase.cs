@@ -4,17 +4,19 @@ using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.GridSystem;
 using DG.Tweening;
 using NUnit.Framework;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Pieces
 {
     public abstract class ChessPieceBase : MonoBehaviour
     {
-        public Vector3Int OccupiedTilePosition { get; private set; }
+        [ShowInInspector,ReadOnly]public Vector3Int OccupiedTilePosition { get; private set; }
         public GridLayer_Chess GridLayer { get; private set; }
 
-        public List<Vector3Int> AvailableMoveList { get; private set; } = new List<Vector3Int>();
+        [ShowInInspector,ReadOnly]public List<Vector3Int> AvailableMoveList { get; private set; } = new List<Vector3Int>();
 
+        [Button]
         public abstract List<Vector3Int> FindAvailableTiles();
 
         public void Build(GridLayer_Chess gridLayer)
@@ -22,6 +24,10 @@ namespace __Project.Systems.ChessSystem._Pieces
             GridLayer = gridLayer;
             PlaceOnTile(GridLayer.GetGridLocalPosition(transform.position));
             AvailableMoveList = new List<Vector3Int>();
+        }
+
+        public void UpdatePiece()
+        {
             FindAvailableTiles();
         }
         public void PlaceOnTile(Vector3Int pos)

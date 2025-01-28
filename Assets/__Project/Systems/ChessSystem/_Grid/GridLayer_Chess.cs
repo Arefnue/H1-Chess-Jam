@@ -15,14 +15,33 @@ namespace __Project.Systems.ChessSystem._Grid
             base.Build();
             foreach (var pieceBase in pieceList)
                 pieceBase.Build(this);
+            
+            foreach (var pieceBase in pieceList)
+                pieceBase.UpdatePiece();
         }
 
-        public bool IsPositionValid(Vector3Int nextPos)
+        public bool IsPositionOnGrid(Vector3Int nextPos)
         {
             if (!TileDict.ContainsKey(nextPos))
             {
                 return false;
             }
+
+            if (!IsPositionOccupied(nextPos)) 
+                return false;
+            return true;
+        }
+
+        private bool IsPositionOccupied(Vector3Int nextPos)
+        {
+            foreach (var pieceBase in pieceList)
+            {
+                if (nextPos == pieceBase.OccupiedTilePosition)
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 

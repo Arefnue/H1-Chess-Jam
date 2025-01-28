@@ -116,6 +116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5964741232276124844, guid: 7ba6f7d25f3e61f4f81d424b0234089d, type: 3}
+      propertyPath: isWall
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5984617401758845168, guid: 7ba6f7d25f3e61f4f81d424b0234089d, type: 3}
       propertyPath: m_Name
       value: NTile_Chess_Wall

@@ -13,7 +13,7 @@ namespace __Project.Systems.ChessSystem._Pieces
 			foreach (var direction in directions)
 			{
 				var nextPos = OccupiedTilePosition + direction;
-				if (GridLayer.IsPositionValid(nextPos))
+				if (GridLayer.IsPositionOnGrid(nextPos))
 				{
 					if (GridLayer.GetNode(nextPos).GetIsWalkable())
 					{
