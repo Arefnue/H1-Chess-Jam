@@ -80,6 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40348ced60a84b23be0334351760694b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorEnum: 0
+  rendererList:
+  - {fileID: 8595885749213297078}
 --- !u!4 &7275137374011809313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4038430189318742865, guid: f22521d2b5027bb4fb6c610ffc51b77e, type: 3}
@@ -157,5 +160,10 @@ PrefabInstance:
 --- !u!4 &8595885749211043514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 411790, guid: 9d3e9c36668dcfe44b524760a4c3a3b5, type: 3}
+  m_PrefabInstance: {fileID: 8595885749211455028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8595885749213297078 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2369410, guid: 9d3e9c36668dcfe44b524760a4c3a3b5, type: 3}
   m_PrefabInstance: {fileID: 8595885749211455028}
   m_PrefabAsset: {fileID: 0}

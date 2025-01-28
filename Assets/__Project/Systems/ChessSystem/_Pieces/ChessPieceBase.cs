@@ -12,10 +12,19 @@ namespace __Project.Systems.ChessSystem._Pieces
 {
     public abstract class ChessPieceBase : MonoBehaviour
     {
+        [SerializeField] private ChessColorEnum colorEnum;
+        
         [ShowInInspector,ReadOnly]public Vector3Int OccupiedTilePosition { get; private set; }
         public GridLayer_Chess GridLayer { get; private set; }
 
         [ShowInInspector,ReadOnly]public List<Vector3Int> AvailableMoveList { get; private set; } = new List<Vector3Int>();
+
+        public ChessColorEnum ColorEnum => colorEnum;
+
+        public void SetColor(ChessColorEnum color)
+        {
+            colorEnum = color;
+        }
 
         [Button]
         public abstract List<Vector3Int> FindAvailableTiles();
@@ -66,6 +75,8 @@ namespace __Project.Systems.ChessSystem._Pieces
             });
         }
 
+        #region Editor
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             if (GridLayer == null)
@@ -79,5 +90,7 @@ namespace __Project.Systems.ChessSystem._Pieces
                 Gizmos.DrawSphere(worldPos, 0.5f);
             }
         }
+#endif
+        #endregion
     }
 }

@@ -153,9 +153,9 @@ namespace __Project.Systems.ChessSystem._Grid
         public override void FindTiles()
         {
             base.FindTiles();
-            PieceList.Clear();
+            pieceList.Clear();
             var piece = transform.GetComponentsInChildren<ChessPieceBase>();
-            PieceList.AddRange(piece);
+            pieceList.AddRange(piece);
         }
 #endif
         #endregion

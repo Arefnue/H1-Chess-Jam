@@ -69,6 +69,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71fd906a2159e247ab4d632e46947db, type: 3}
+--- !u!23 &4185667699618763923 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2398162, guid: a71fd906a2159e247ab4d632e46947db, type: 3}
+  m_PrefabInstance: {fileID: 4185667699621151553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4185667699620835049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 470440, guid: a71fd906a2159e247ab4d632e46947db, type: 3}
@@ -154,6 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584f92025dc64b3eabc439884b7a0793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorEnum: 0
+  rendererList:
+  - {fileID: 4185667699618763923}
 --- !u!4 &7275137374011809313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4038430189318742865, guid: f22521d2b5027bb4fb6c610ffc51b77e, type: 3}
