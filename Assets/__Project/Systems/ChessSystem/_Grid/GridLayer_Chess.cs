@@ -16,7 +16,7 @@ namespace __Project.Systems.ChessSystem._Grid
         
         public ChessPieceBase SelectedPiece { get; private set; }
 
-        public List<ChessPieceBase> PieceList { get; private set; }
+        public List<ChessPieceBase> PieceList { get; private set; } = new List<ChessPieceBase>();
 
         #endregion
         
@@ -77,11 +77,17 @@ namespace __Project.Systems.ChessSystem._Grid
 
             return null;
         }
-        public void SelectedPieceMoved(Vector3 pos)
-        {
-            
-        }
 
+        public void MoveSelectedPiece(Vector3Int target)
+        {
+            if (!SelectedPiece)
+            {
+                return;
+            }
+            
+            SelectedPiece.Move(target);
+            DeselectPiece();
+        }
         public void SetSelectedPiece(ChessPieceBase piece)
         {
             SelectedPiece = piece;
@@ -92,6 +98,11 @@ namespace __Project.Systems.ChessSystem._Grid
         public void SelectPiece(Vector3Int pos)
         {
             var piece = GetPiece(pos);
+            SelectPiece(piece);
+        }
+        
+        public void SelectPiece(ChessPieceBase piece)
+        {
             SetSelectedPiece(piece);    
         }
         
@@ -105,7 +116,7 @@ namespace __Project.Systems.ChessSystem._Grid
         }
 
         
-        private void DeselectPiece()
+        public void DeselectPiece()
         {
             SelectedPiece = null;
             selector.ClearSelection();
@@ -113,12 +124,12 @@ namespace __Project.Systems.ChessSystem._Grid
         
         public void ShowSelection(List<Vector3Int> selection,ChessPieceBase piece)
         {
-            Dictionary<Vector3, GridSelector.SelectionEnum> dt = new Dictionary<Vector3, GridSelector.SelectionEnum>();
+            Dictionary<Vector3Int, GridSelector.SelectionEnum> dt = new Dictionary<Vector3Int, GridSelector.SelectionEnum>();
             for (int i = 0; i < selection.Count; i++)
             {
                 var target = selection[i];
                 var position = GetNode(target).GetNodePosition();
-                bool isSquareFree = IsPositionOccupied(position,out var occuipedPiece);
+                bool isSquareFree = IsPositionOccupied(position,out var occupiedPiece);
                 var targetEnum = GridSelector.SelectionEnum.Empty;
                 if (!isSquareFree)
                 {

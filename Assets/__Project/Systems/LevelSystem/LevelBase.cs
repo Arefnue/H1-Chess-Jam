@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using __Project.Systems.BlockSystem;
+using __Project.Systems.ChessSystem;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.ChessSystem._Pieces;
 using __Project.Systems.GridSystem;

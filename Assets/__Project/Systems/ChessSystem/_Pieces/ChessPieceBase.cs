@@ -54,7 +54,13 @@ namespace __Project.Systems.ChessSystem._Pieces
         {
             var targetPosition = GridLayer.GetNode(targetPos).GetNodePosition();
             OccupiedTilePosition = targetPos;
-            transform.DOMove(targetPosition, 0.5f);
+            var finalDest = GridLayer.Grid.GetCellCenterLocal(targetPosition);
+            finalDest.y = 0;
+            transform.DOJump(finalDest,2,1, 0.5f).OnComplete(() =>
+            {
+                PlaceOnTile(targetPos);
+                UpdatePiece();
+            });
         }
 
         private void OnDrawGizmosSelected()

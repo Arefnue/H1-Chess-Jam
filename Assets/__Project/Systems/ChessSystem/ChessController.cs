@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using _NueCore.Common.Utility;
+using UnityEngine;
 
-namespace __Project.Systems.ChessSystem._Pieces
+namespace __Project.Systems.ChessSystem
 {
     public class ChessController : MonoBehaviour
     {
@@ -9,7 +11,6 @@ namespace __Project.Systems.ChessSystem._Pieces
         {
 
         }
-
         public bool IsAllStepsCompleted()
         {
             if (ActiveStepCount >= 3)

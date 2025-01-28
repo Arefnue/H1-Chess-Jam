@@ -18,22 +18,24 @@ namespace __Project.Systems.ChessSystem._Utils
             Right = 1,
             Wrong = 2
         }
-        public void ShowSelection(Dictionary<Vector3, SelectionEnum> squareData)
+        public void ShowSelection(Dictionary<Vector3Int, SelectionEnum> tData)
         {
             ClearSelection();
-            foreach (var data in squareData)
+            foreach (var data in tData)
             {
-                var selector = Instantiate(selectorPrefab, data.Key, Quaternion.identity);
-                SpawnedSelectors.Add(selector);
+                var spawnPos = new Vector3(data.Key.x, 0, data.Key.y) + new Vector3(0.5f,0,0.5f);
+                var selector = Instantiate(selectorPrefab, spawnPos, Quaternion.identity);
+                selector.Build(data.Key);
                 var mat = materialDict[data.Value];
                 selector.ChangeMaterial(mat);
+                SpawnedSelectors.Add(selector);
             }
         }
 
         public void ClearSelection()
         {
             for (int i = 0; i < SpawnedSelectors.Count; i++)
-                Destroy(SpawnedSelectors[i]);
+                Destroy(SpawnedSelectors[i].gameObject);
             SpawnedSelectors.Clear();
         }
     }

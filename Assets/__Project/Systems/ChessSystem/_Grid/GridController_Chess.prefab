@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 7568033016527239954}
   - component: {fileID: 3273283858253600728}
   m_Layer: 0
-  m_Name: GridController
+  m_Name: GridController_Chess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +112,12 @@ MonoBehaviour:
   gridLayerList:
   - {fileID: 4887079522969178728}
   moveRoot: {fileID: 5019953247214259125}
+  pieceLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  highlightLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &6666095161937178032
 GameObject:
   m_ObjectHideFlags: 0
