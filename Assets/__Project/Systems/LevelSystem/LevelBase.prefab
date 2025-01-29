@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GridController
       objectReference: {fileID: 0}
+    - target: {fileID: 3618894184053529464, guid: 68db3b5b945fb6e4090ebc39263c2d29, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18ec8f460705d5341a403f9076e4e0f3, type: 2}
     - target: {fileID: 7568033016527239954, guid: 68db3b5b945fb6e4090ebc39263c2d29, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
