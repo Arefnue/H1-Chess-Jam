@@ -1,5 +1,6 @@
 ﻿using System;
 using __Project.Systems.ChessSystem._Pieces;
+using __Project.Systems.ChessSystem._Platforms;
 using __Project.Systems.ChessSystem._Utils;
 using __Project.Systems.GridSystem;
 using __Project.Systems.LevelSystem;
@@ -25,6 +26,16 @@ namespace __Project.Systems.ChessSystem._Grid
             RBuss.OnEvent<ChessREvents.PieceMoveStartedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
             {
                 ActiveLayer.UpdateLayer();
+            });
+
+            RBuss.OnEvent<ColorPlatform.ColorsMatchedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
+            {
+                ActiveLayer.UpdateLayer();
+                var chessLayer =ActiveLayer as GridLayer_Chess;
+                if (chessLayer != null && chessLayer.PieceList.Count<=0)
+                {
+                    RBuss.Publish(new ChessREvents.AllPiecesFinishedREvent());
+                }
             });
         }
 
@@ -60,8 +71,12 @@ namespace __Project.Systems.ChessSystem._Grid
                 }
                 if (ht.TryGetComponent<ChessPieceBase>(out var piece))
                 {
+                   
                     chessLayer.DeselectPiece();
-                    chessLayer.SelectPiece(piece.OccupiedTilePosition);
+                    if (!piece.IgnoreInteraction)
+                    {
+                        chessLayer.SelectPiece(piece.OccupiedTilePosition);
+                    }
                     return;
                 }
                 

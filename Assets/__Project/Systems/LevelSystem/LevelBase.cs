@@ -40,7 +40,7 @@ namespace __Project.Systems.LevelSystem
             GridController.Build();
             ChessController.Build();
             RegisterREvents();
-            CheckMissionSteps();
+            CheckSteps();
         }
         #endregion
 
@@ -51,14 +51,20 @@ namespace __Project.Systems.LevelSystem
                 .TakeUntilDisable(gameObject)
                 .Subscribe(ev =>
                 {
-                    CheckMissionSteps();
+                    CheckSteps();
                 });
+            
+            RBuss.OnEvent<ChessREvents.AllPiecesFinishedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
+            {
+                chessController.LevelUp();
+                CheckSteps();
+            });
         }
         #endregion
 
         #region Methods
        
-        private void CheckMissionSteps()
+        private void CheckSteps()
         {
             ProcessStepAsync().AttachExternalCancellation(CancellationToken).Forget();
         }
@@ -66,7 +72,8 @@ namespace __Project.Systems.LevelSystem
         [Button,TabGroup("Editor"),HideInEditorMode]
         public void CompleteStep()
         {
-            //MissionController.CompleteStep();
+            chessController.LevelUp();
+            CheckSteps();
         }
         #endregion
         

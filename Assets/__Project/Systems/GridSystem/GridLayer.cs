@@ -113,6 +113,16 @@ namespace __Project.Systems.GridSystem
         #endregion
 
         #region Tile
+        
+        public NodeGeneric<TTile> GetNode(Vector3 worldPos)
+        {
+            var wp= grid.WorldToCell(worldPos);
+            if (TileDict.ContainsKey(wp))
+            {
+                return TileDict[wp];
+            }
+            return null;
+        }
         public NodeGeneric<TTile> GetNode(Vector3Int cellPos)
         {
             if (TileDict.ContainsKey(cellPos))

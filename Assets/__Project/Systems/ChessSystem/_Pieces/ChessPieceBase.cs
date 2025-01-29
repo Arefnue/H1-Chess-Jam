@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.GridSystem;
+using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
 using NUnit.Framework;
@@ -13,29 +14,33 @@ namespace __Project.Systems.ChessSystem._Pieces
     public abstract class ChessPieceBase : MonoBehaviour
     {
         [SerializeField] private ChessColorEnum colorEnum;
-        
-        [ShowInInspector,ReadOnly]public Vector3Int OccupiedTilePosition { get; private set; }
-        public GridLayer_Chess GridLayer { get; private set; }
 
+        #region Cache
+        public GridLayer_Chess GridLayer { get; private set; }
+        public ChessColorEnum ColorEnum => colorEnum;
+        [ShowInInspector,ReadOnly]public Vector3Int OccupiedTilePosition { get; private set; }
         [ShowInInspector,ReadOnly]public List<Vector3Int> AvailableMoveList { get; private set; } = new List<Vector3Int>();
 
-        public ChessColorEnum ColorEnum => colorEnum;
+        public bool IgnoreInteraction { get; set; }
+        #endregion
 
-        public void SetColor(ChessColorEnum color)
-        {
-            colorEnum = color;
-        }
-
-        [Button]
-        public abstract List<Vector3Int> FindAvailableTiles();
-
+        #region Setup
         public void Build(GridLayer_Chess gridLayer)
         {
             GridLayer = gridLayer;
             PlaceOnTile(GridLayer.GetGridLocalPosition(transform.position));
             AvailableMoveList = new List<Vector3Int>();
         }
+        #endregion
 
+        #region Methods
+        public void SetColor(ChessColorEnum color)
+        {
+            colorEnum = color;
+        }
+        
+        [Button]
+        public abstract List<Vector3Int> FindAvailableTiles();
         public List<Vector3Int> GetAvailableMoves()
         {
             return AvailableMoveList;
@@ -49,7 +54,7 @@ namespace __Project.Systems.ChessSystem._Pieces
         {
             OccupiedTilePosition = pos;
         }
-        
+
         public bool CanMoveTo(Vector3Int pos)
         {
             return AvailableMoveList.Contains(pos);
@@ -71,10 +76,14 @@ namespace __Project.Systems.ChessSystem._Pieces
             {
                 PlaceOnTile(targetPos);
                 UpdatePiece();
+                "C".NLog();
                 RBuss.Publish(new ChessREvents.PieceMoveFinishedREvent(this));
             });
         }
 
+        
+        #endregion
+        
         #region Editor
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()

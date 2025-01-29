@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using __Project.Systems.ChessSystem._Pieces;
+using __Project.Systems.ChessSystem._Platforms;
 using __Project.Systems.ChessSystem._Utils;
 using __Project.Systems.GridSystem;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace __Project.Systems.ChessSystem._Grid
     public class GridLayer_Chess : GridLayer<NTile_Chess>
     {
         [SerializeField] private List<ChessPieceBase> pieceList;
+        [SerializeField] private List<ColorPlatform> platformList;
         [SerializeField] private GridSelector selector;
 
 
@@ -17,6 +19,7 @@ namespace __Project.Systems.ChessSystem._Grid
         public ChessPieceBase SelectedPiece { get; private set; }
 
         public List<ChessPieceBase> PieceList { get; private set; } = new List<ChessPieceBase>();
+        public List<ColorPlatform> PlatformList { get; private set; } = new List<ColorPlatform>();
 
         #endregion
         
@@ -24,15 +27,19 @@ namespace __Project.Systems.ChessSystem._Grid
         public override void Build()
         {
             base.Build();
+            foreach (var platform in platformList)
+                PlatformList.Add(platform);
             foreach (var pieceBase in pieceList)
-            {
                 PieceList.Add(pieceBase);
-            }
+            
             foreach (var pieceBase in PieceList)
                 pieceBase.Build(this);
             
             foreach (var pieceBase in PieceList)
                 pieceBase.UpdatePiece();
+            
+            foreach (var platform in PlatformList)
+                platform.Build(this);
         }
 
         public override void UpdateLayer()
@@ -113,7 +120,16 @@ namespace __Project.Systems.ChessSystem._Grid
             SetSelectedPiece(piece);    
         }
         
-        private void RemovePiece(ChessPieceBase piece)
+        public void RemovePiece(ChessPieceBase piece)
+        {
+            if (piece)
+            {
+                PieceList.Remove(piece);
+                
+            }
+        }
+
+        public void DestroyPiece(ChessPieceBase piece)
         {
             if (piece)
             {
@@ -121,7 +137,6 @@ namespace __Project.Systems.ChessSystem._Grid
                 Destroy(piece.gameObject);
             }
         }
-
         
         public void DeselectPiece()
         {
@@ -156,6 +171,8 @@ namespace __Project.Systems.ChessSystem._Grid
             pieceList.Clear();
             var piece = transform.GetComponentsInChildren<ChessPieceBase>();
             pieceList.AddRange(piece);
+            var platform = transform.GetComponentsInChildren<ColorPlatform>();
+            platformList.AddRange(platform);
         }
 #endif
         #endregion

@@ -21,5 +21,10 @@ namespace __Project.Systems.ChessSystem
                 Piece = piece;
             }
         }
+        
+        public class AllPiecesFinishedREvent : REvent
+        {
+            
+        }
     }
 }
