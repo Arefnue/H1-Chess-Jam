@@ -79,6 +79,19 @@ namespace __Project.Systems.ChessSystem._Grid
             return IsPositionOccupied(nextPos, out var piece);
         }
 
+        public ColorPlatform GetPlatform(Vector3Int pos)
+        {
+            foreach (var platform in PlatformList)
+            {
+                if (pos == platform.OccupiedTilePosition)
+                {
+                    return platform;
+                }
+            }
+
+            return null;
+        }
+
         public ChessPieceBase GetPiece(Vector3Int pos)
         {
             foreach (var pieceBase in PieceList)
@@ -153,9 +166,13 @@ namespace __Project.Systems.ChessSystem._Grid
                 var position = GetNode(target).GetNodePosition();
                 bool isSquareFree = IsPositionOccupied(position,out var occupiedPiece);
                 var targetEnum = GridSelector.SelectionEnum.Empty;
-                if (!isSquareFree)
+                var targetPlatform =GetPlatform(position);
+                if (targetPlatform)
                 {
-                    targetEnum = GridSelector.SelectionEnum.Right;
+                    targetEnum = piece.ColorEnum == targetPlatform.TargetColor
+                        ? GridSelector.SelectionEnum.Right
+                        : GridSelector.SelectionEnum.Wrong;
+                    
                 }
                 dt.Add(position, targetEnum);
             }
