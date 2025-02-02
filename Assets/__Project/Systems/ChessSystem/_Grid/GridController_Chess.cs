@@ -61,14 +61,15 @@ namespace __Project.Systems.ChessSystem._Grid
         private void Cast()
         {
             var ray = CameraStatic.GetMouseRay();
+            var chessLayer =ActiveLayer as GridLayer_Chess;
+            if (chessLayer == null)
+            {
+                return;
+            }
             if (CastHelper.TryRayCast(out var hit,ray,1000,pieceLayer))
             {
                 var ht = hit.collider.attachedRigidbody;
-                var chessLayer =ActiveLayer as GridLayer_Chess;
-                if (chessLayer == null)
-                {
-                    return;
-                }
+               
                 if (ht.TryGetComponent<ChessPieceBase>(out var piece))
                 {
                    
@@ -79,13 +80,14 @@ namespace __Project.Systems.ChessSystem._Grid
                     }
                     return;
                 }
-                
+              
                 if (ht.TryGetComponent<SelectorHighlight>(out var highlight))
                 {
                     chessLayer.MoveSelectedPiece(highlight.Position);
                 }
-                    
+               
             }
+            chessLayer.DeselectPiece();
         }
     }
 }
