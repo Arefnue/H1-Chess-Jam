@@ -15,12 +15,15 @@ namespace __Project.Systems.ChessSystem._Pieces
 				var nextPos = OccupiedTilePosition + direction;
 				if (GridLayer.IsPositionOnGrid(nextPos))
 				{
-					if (GridLayer.GetNode(nextPos).GetIsWalkable())
+					if (!GridLayer.GetNode(nextPos).GetIsWalkable())
 					{
-						if (GridLayer.GetNode(nextPos).NTileBase)
-						{
-							AvailableMoveList.Add(nextPos);
-						}
+						continue;
+					}
+					if (GridLayer.IsPositionOccupied(nextPos))
+						continue;
+					if (GridLayer.GetNode(nextPos).NTileBase)
+					{
+						AvailableMoveList.Add(nextPos);
 					}
 				}
 			}
