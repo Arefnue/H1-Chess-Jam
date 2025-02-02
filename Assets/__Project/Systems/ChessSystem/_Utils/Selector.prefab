@@ -47,9 +47,9 @@ MonoBehaviour:
   materialDict:
     keyValuePairs:
     - key: 0
-      value: {fileID: 2100000, guid: 20070725441575f46a00805afc50d868, type: 2}
+      value: {fileID: 2100000, guid: 0e5fe1858f0454fa7905e0148fcbb970, type: 2}
     - key: 1
-      value: {fileID: 2100000, guid: b4285e61b2974764a8da352aa6bdc8b3, type: 2}
+      value: {fileID: 2100000, guid: 2f47e2d719dd2804082240a617eb2c36, type: 2}
     - key: 2
-      value: {fileID: 2100000, guid: 57736c96e8e6c724eb331d89c4edbc73, type: 2}
+      value: {fileID: 2100000, guid: 15924524a550aae4fb609ad3ae7cfe99, type: 2}
   selectorPrefab: {fileID: 6052841988970422891, guid: 43859cfc3b35cc54389ad69a28503681, type: 3}

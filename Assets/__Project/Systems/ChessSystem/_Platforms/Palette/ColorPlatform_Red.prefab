@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2004968414334724819, guid: 9a361fccc12d63b4b9d0a838f966de72, type: 3}
       propertyPath: m_Name
-      value: ColorPlatformBase
+      value: ColorPlatform_Red
       objectReference: {fileID: 0}
+    - target: {fileID: 2092604843577950663, guid: 9a361fccc12d63b4b9d0a838f966de72, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ee79e0abcac71084489a3a2797b006a0, type: 2}
     - target: {fileID: 7109768361635797296, guid: 9a361fccc12d63b4b9d0a838f966de72, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
