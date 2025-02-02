@@ -7,19 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Platform_Green
-  m_Shader: {fileID: 4800000, guid: 733fefdcde0d35f4b822d2935d5a22f4, type: 3}
-  m_Parent: {fileID: 2100000, guid: 2c40631b13ecac34d95caaf86eedd46e, type: 2}
+  m_Name: PlatformGlow_White
+  m_Shader: {fileID: 4800000, guid: 48bccc0cce2e16b45802a370e0e3104b, type: 3}
+  m_Parent: {fileID: 2100000, guid: 9633125dc1787334dbbf2e3854c9e06a, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _MK_ALBEDO_MAP
   - _MK_ARTISTIC_ANIMATION_STUTTER
-  - _MK_ARTISTIC_DRAWN
-  - _MK_COLOR_GRADING_FINAL_OUTPUT
-  - _MK_ENVIRONMENT_REFLECTIONS_AMBIENT
-  - _MK_LIGHT_BANDED
   - _MK_RECEIVE_SHADOWS
-  - _MK_RIM_SPLIT
   - _MK_SURFACE_TYPE_TRANSPARENT
   - _MK_WRAPPED_DIFFUSE
   m_InvalidKeywords:
@@ -40,11 +35,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _AdvancedTab: 0
-    - _ParticlesTab: 0
+    m_Floats: []
     m_Colors:
-    - _AlbedoColor: {r: 0, g: 1, b: 0.16466069, a: 1}
-    - _Color: {r: 0, g: 1, b: 0.16466066, a: 1}
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

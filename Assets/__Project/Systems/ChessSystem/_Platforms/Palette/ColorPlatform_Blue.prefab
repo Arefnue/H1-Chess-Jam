@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50223343945867176, guid: 9a361fccc12d63b4b9d0a838f966de72, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: beda16401b900f147b6c1800161cd5be, type: 2}
     - target: {fileID: 2004968414334724819, guid: 9a361fccc12d63b4b9d0a838f966de72, type: 3}
       propertyPath: m_Name
       value: ColorPlatform_Blue
