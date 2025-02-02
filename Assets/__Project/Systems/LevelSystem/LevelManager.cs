@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using __Project.Systems.LevelSystem._LevelEndSubSystem;
+using __Project.Systems.LevelSystem._TimerSubSystem;
 using _NueCore.Common.ReactiveUtils;
 using _NueCore.FaderSystem;
 using _NueCore.ManagerSystem.Core;
@@ -19,6 +20,7 @@ namespace __Project.Systems.LevelSystem
         [SerializeField] private Transform levelSpawnRoot;
         [SerializeField] private PopupDataDisplay winPopup;
         [SerializeField] private PopupDataDisplay losePopup;
+        [SerializeField] private TimeController timeController;
         
 
         public LevelBase SpawnedLevel { get; private set; }
@@ -30,7 +32,7 @@ namespace __Project.Systems.LevelSystem
         public override void NAwake()
         {
             base.NAwake();
-
+            timeController.Build();
             RBuss.OnEvent<LevelREvents.LevelWonREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
             {
                 if (_popup)

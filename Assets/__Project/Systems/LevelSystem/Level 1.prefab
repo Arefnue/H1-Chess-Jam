@@ -519,6 +519,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6010091367579023023}
     m_Modifications:
+    - target: {fileID: 1013280679750580285, guid: 44d592db98d9d964fb9c5e6c92157a55, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2436243653099142842, guid: 44d592db98d9d964fb9c5e6c92157a55, type: 3}
       propertyPath: m_Name
       value: ColorPlatform_Black
@@ -1253,6 +1257,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6010091367579023023}
     m_Modifications:
+    - target: {fileID: 1013280679750580285, guid: 9ebee5d60683a7049bfdee4e7b0e18c5, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2436243653099142842, guid: 9ebee5d60683a7049bfdee4e7b0e18c5, type: 3}
       propertyPath: m_Name
       value: ColorPlatform_Blue
@@ -1984,6 +1992,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: levelDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: missionStepList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2538,6 +2550,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6010091367579023023}
     m_Modifications:
+    - target: {fileID: 1013280679750580285, guid: 3ab16ac255d3b7c4997a9768c8dd6ad3, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2436243653099142842, guid: 3ab16ac255d3b7c4997a9768c8dd6ad3, type: 3}
       propertyPath: m_Name
       value: ColorPlatform_Red

@@ -17,6 +17,7 @@ namespace __Project.Systems.LevelSystem
     public class LevelBase : MonoBehaviour
     {
         [SerializeField,TabGroup("Settings")] private int coinReward = 4;
+        [SerializeField,TabGroup("Settings")] private int levelDuration = 300;
         [SerializeField,TabGroup("References")] private GridController_Chess gridController;
         [SerializeField,TabGroup("References")] private ChessController chessController;
        
@@ -28,6 +29,8 @@ namespace __Project.Systems.LevelSystem
         public GridController_Chess GridController => gridController;
 
         public ChessController ChessController => chessController;
+
+        public int LevelDuration => levelDuration;
 
         #endregion
 
