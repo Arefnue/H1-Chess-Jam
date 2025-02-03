@@ -76,7 +76,6 @@ namespace __Project.Systems.ChessSystem._Pieces
             {
                 PlaceOnTile(targetPos);
                 UpdatePiece();
-                "C".NLog();
                 RBuss.Publish(new ChessREvents.PieceMoveFinishedREvent(this));
             });
         }
