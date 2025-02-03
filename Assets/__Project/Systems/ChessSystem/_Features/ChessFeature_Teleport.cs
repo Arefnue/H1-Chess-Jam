@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.ChessSystem._Pieces;
+using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -12,8 +13,6 @@ namespace __Project.Systems.ChessSystem._Features
     public class ChessFeature_Teleport : ChessFeatureBase
     {
         [SerializeField] private ChessColorEnum targetColor;
-        [SerializeField] private Material activeMaterial;
-        [SerializeField] private Material passiveMaterial;
         [SerializeField] private Renderer rend;
         
         
@@ -24,30 +23,39 @@ namespace __Project.Systems.ChessSystem._Features
         public override void Build(GridLayer_Chess gridLayerChess)
         {
             base.Build(gridLayerChess);
-            PlaceOnTile(GridLayerChess.GetGridLocalPosition(transform.position));
+            PlaceOnTile(GridLayerChess.GetWorldPos(transform.position));
             
             MatchedTeleport = GridLayerChess.FeatureList
                 .OfType<ChessFeature_Teleport>()
                 .FirstOrDefault(teleport => teleport != this && teleport.TargetColor == this.TargetColor);
             
-            RBuss.OnEvent<ChessREvents.PieceMoveFinishedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
+            RBuss.OnEvent<ChessREvents.PieceMoveFinishedREvent>().Subscribe(ev =>
             {
+                "C".NLog();
                 UpdateFeature();
                 if (!CanTeleport())
-                {
                     return;
-                }
-                if (ev.Piece.OccupiedTilePosition == OccupiedTilePosition)
+                ev.Piece.OccupiedTilePosition.NLog(Color.yellow);
+                OccupiedTilePosition.NLog(Color.magenta);
+                if (GridLayerChess.IsPositionsMatched(ev.Piece.OccupiedTilePosition,OccupiedTilePosition))
                 {
+                    "xxxx".NLog();
                     Teleport(ev.Piece);
                 }
-            });
+            }).AddTo(gameObject);
         }
 
         public override void UpdateFeature()
         {
             base.UpdateFeature();
-            rend.material = CanTeleport() ? activeMaterial : passiveMaterial;
+            if (CanTeleport())
+            {
+                rend.material.DisableKeyword("GREYSCALE_ON");
+            }
+            else
+            {
+                rend.material.EnableKeyword("GREYSCALE_ON");
+            }
         }
 
         public bool CanTeleport()
@@ -56,7 +64,6 @@ namespace __Project.Systems.ChessSystem._Features
             {
                 return false;
             }
-
             if (GridLayerChess.IsPositionOccupied(OccupiedTilePosition))
             {
                 return false;
@@ -66,13 +73,13 @@ namespace __Project.Systems.ChessSystem._Features
             {
                 return false;
             }
-
             return true;
         }
 
         private Sequence _sequence;
         public void Teleport(ChessPieceBase piece)
         {
+            "Tp".NLog();
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             _sequence.Append(transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 1, 0.2f));

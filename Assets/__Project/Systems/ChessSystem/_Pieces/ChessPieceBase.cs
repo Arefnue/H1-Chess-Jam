@@ -28,7 +28,8 @@ namespace __Project.Systems.ChessSystem._Pieces
         public void Build(GridLayer_Chess gridLayer)
         {
             GridLayer = gridLayer;
-            PlaceOnTile(GridLayer.GetGridLocalPosition(transform.position));
+            var targetPosition = GridLayer.GetNode(transform.position).GetNodePosition();
+            PlaceOnTile(targetPosition);
             AvailableMoveList = new List<Vector3Int>();
         }
         #endregion

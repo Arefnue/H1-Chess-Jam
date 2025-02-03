@@ -94,6 +94,19 @@ namespace __Project.Systems.ChessSystem._Grid
             return IsPositionOccupied(nextPos, out var piece);
         }
 
+        public bool IsPositionsMatched(Vector3Int first, Vector3Int second)
+        {
+            first.y = 0;
+            second.y = 0;
+            return first == second;
+        }
+
+        public Vector3Int GetWorldPos(Vector3 pos)
+        {
+            return Grid.WorldToCell(pos);
+        }
+        
+
         public ColorPlatform GetPlatform(Vector3Int pos)
         {
             foreach (var platform in PlatformList)
@@ -201,6 +214,8 @@ namespace __Project.Systems.ChessSystem._Grid
         {
             base.FindTiles();
             pieceList.Clear();
+            platformList.Clear();
+            featureList.Clear();
             var piece = transform.GetComponentsInChildren<ChessPieceBase>();
             pieceList.AddRange(piece);
             var platform = transform.GetComponentsInChildren<ColorPlatform>();
