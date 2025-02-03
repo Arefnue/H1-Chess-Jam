@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using __Project.Systems.ChessSystem._Features;
 using __Project.Systems.ChessSystem._Pieces;
 using __Project.Systems.ChessSystem._Platforms;
 using __Project.Systems.ChessSystem._Utils;
@@ -12,7 +13,8 @@ namespace __Project.Systems.ChessSystem._Grid
         [SerializeField] private List<ChessPieceBase> pieceList;
         [SerializeField] private List<ColorPlatform> platformList;
         [SerializeField] private GridSelector selector;
-
+        [SerializeField] private List<ChessFeatureBase> featureList;
+        
 
         #region Cache
         
@@ -20,6 +22,7 @@ namespace __Project.Systems.ChessSystem._Grid
 
         public List<ChessPieceBase> PieceList { get; private set; } = new List<ChessPieceBase>();
         public List<ColorPlatform> PlatformList { get; private set; } = new List<ColorPlatform>();
+        public List<ChessFeatureBase> FeatureList { get; private set; } = new List<ChessFeatureBase>();
 
         #endregion
         
@@ -31,6 +34,8 @@ namespace __Project.Systems.ChessSystem._Grid
                 PlatformList.Add(platform);
             foreach (var pieceBase in pieceList)
                 PieceList.Add(pieceBase);
+            foreach (var feature in featureList)
+                FeatureList.Add(feature);
             
             foreach (var pieceBase in PieceList)
                 pieceBase.Build(this);
@@ -40,6 +45,13 @@ namespace __Project.Systems.ChessSystem._Grid
             
             foreach (var platform in PlatformList)
                 platform.Build(this);
+            
+            foreach (var feature in FeatureList)
+                feature.Build(this);
+
+            foreach (var feature in FeatureList)
+                feature.UpdateFeature();
+
         }
 
         public override void UpdateLayer()
@@ -47,6 +59,9 @@ namespace __Project.Systems.ChessSystem._Grid
             base.UpdateLayer();
             foreach (var pieceBase in PieceList)
                 pieceBase.UpdatePiece();
+            
+            foreach (var feature in FeatureList)
+                feature.UpdateFeature();
         }
 
         #endregion
@@ -190,6 +205,8 @@ namespace __Project.Systems.ChessSystem._Grid
             pieceList.AddRange(piece);
             var platform = transform.GetComponentsInChildren<ColorPlatform>();
             platformList.AddRange(platform);
+            var feature = transform.GetComponentsInChildren<ChessFeatureBase>();
+            featureList.AddRange(feature);
         }
 #endif
         #endregion

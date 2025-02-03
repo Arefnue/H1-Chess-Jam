@@ -80,6 +80,27 @@ namespace __Project.Systems.ChessSystem._Pieces
             });
         }
 
+        public virtual void Teleport(Vector3Int targetPos)
+        {
+            var targetPosition = GridLayer.GetNode(targetPos).GetNodePosition();
+            OccupiedTilePosition = targetPos;
+            var finalDest = GridLayer.Grid.GetCellCenterLocal(targetPosition);
+            finalDest.y = 0;
+            RBuss.Publish(new ChessREvents.PieceMoveStartedREvent(this));
+            var seq = DOTween.Sequence();
+            seq.Append(transform.DOScale(Vector3.zero, 0.25f).OnComplete(() =>
+            {
+                transform.position = finalDest;
+            }));
+            seq.Append(transform.DOScale(Vector3.one, 0.25f));
+            seq.OnComplete(() =>
+            {
+                PlaceOnTile(targetPos);
+                UpdatePiece();
+                RBuss.Publish(new ChessREvents.PieceMoveFinishedREvent(this));
+            });
+        }
+
         
         #endregion
         
