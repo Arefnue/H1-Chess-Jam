@@ -12,16 +12,13 @@ namespace __Project.Systems.ChessSystem._Pieces
             foreach (var direction in directions)
             {
                 var nextPos = OccupiedTilePosition + direction;
-                if (GridLayer.IsPositionOnGrid(nextPos))
-                {
-                    if (GridLayer.GetNode(nextPos).GetIsWalkable())
-                    {
-                        if (GridLayer.GetNode(nextPos).NTileBase)
-                        {
-                            AvailableMoveList.Add(nextPos);
-                        }
-                    }
-                }
+                if (!GridLayer.IsPositionOnGrid(nextPos))
+                    continue;
+                if (!GridLayer.GetNode(nextPos).GetIsWalkable())
+                    continue;
+                if (GridLayer.IsPositionOccupied(nextPos))
+                    continue;
+                AvailableMoveList.Add(nextPos);
             }
 
             return AvailableMoveList;

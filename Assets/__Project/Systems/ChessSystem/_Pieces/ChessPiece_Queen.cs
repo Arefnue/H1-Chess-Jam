@@ -33,12 +33,12 @@ namespace __Project.Systems.ChessSystem._Pieces
                         break;
                     AvailableMoveList.Add(nextPos);
                     nextPos += direction;
-                   
-
                 }
             }
 
             return AvailableMoveList;
+            
+            
         }
     }
 }
