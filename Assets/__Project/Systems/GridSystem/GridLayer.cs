@@ -146,7 +146,7 @@ namespace __Project.Systems.GridSystem
         
         #region Editor
 #if UNITY_EDITOR
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             if (grid == null)
             {

@@ -68,12 +68,11 @@ namespace __Project.Systems.ChessSystem._Pieces
         
         public virtual void Move(Vector3Int targetPos)
         {
-            var targetPosition = GridLayer.GetNode(targetPos).GetNodePosition();
             OccupiedTilePosition = targetPos;
-            var finalDest = GridLayer.Grid.GetCellCenterLocal(targetPosition);
-            finalDest.y = 0;
+         
             RBuss.Publish(new ChessREvents.PieceMoveStartedREvent(this));
-            transform.DOJump(finalDest,2,1, 0.5f).OnComplete(() =>
+         
+            MoveTween(targetPos).OnComplete(() =>
             {
                 PlaceOnTile(targetPos);
                 UpdatePiece();
@@ -81,6 +80,13 @@ namespace __Project.Systems.ChessSystem._Pieces
             });
         }
 
+        public virtual Tween MoveTween(Vector3Int targetPos)
+        {
+            var finalDest = GridLayer.Grid.GetCellCenterLocal(targetPos);
+            finalDest.y = 0;
+            return transform.DOMove(finalDest,0.5f);
+        }
+        
         public virtual void Teleport(Vector3Int targetPos)
         {
             var targetPosition = GridLayer.GetNode(targetPos).GetNodePosition();

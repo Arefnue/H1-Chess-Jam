@@ -64,16 +64,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9168516122277963330, guid: 861e95a585868b643bf2e4a1d0ae63b7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861e95a585868b643bf2e4a1d0ae63b7, type: 3}
---- !u!23 &2298611289519892278 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2313672, guid: 861e95a585868b643bf2e4a1d0ae63b7, type: 3}
-  m_PrefabInstance: {fileID: 2298611289522072318}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2298611289522226680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 438022, guid: 861e95a585868b643bf2e4a1d0ae63b7, type: 3}
@@ -160,8 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorEnum: 0
-  rendererList:
-  - {fileID: 2298611289519892278}
 --- !u!4 &7275137374011809313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4038430189318742865, guid: f22521d2b5027bb4fb6c610ffc51b77e, type: 3}

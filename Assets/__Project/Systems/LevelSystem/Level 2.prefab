@@ -1797,6 +1797,34 @@ PrefabInstance:
       propertyPath: missionStepList.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9346764
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.35549992
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 41.648
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7119046842677994882, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: m_Name
       value: Level 2
