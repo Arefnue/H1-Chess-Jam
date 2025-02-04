@@ -5,6 +5,7 @@ using __Project.Systems.GridSystem;
 using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
+using HighlightPlus;
 using NUnit.Framework;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -14,7 +15,8 @@ namespace __Project.Systems.ChessSystem._Pieces
     public abstract class ChessPieceBase : MonoBehaviour
     {
         [SerializeField] private ChessColorEnum colorEnum;
-
+        [SerializeField] public HighlightEffect highlightEffect;
+        
         #region Cache
         public GridLayer_Chess GridLayer { get; private set; }
         public ChessColorEnum ColorEnum => colorEnum;
@@ -35,6 +37,25 @@ namespace __Project.Systems.ChessSystem._Pieces
         #endregion
 
         #region Methods
+
+        public void OnSelected()
+        {
+            SetHighlight(true);
+        }
+        public void OnDeselected()
+        {
+            SetHighlight(false);
+        }
+        public void SetHighlight(bool status)
+        {
+            if (!highlightEffect)
+            {
+                return;
+            }
+
+            highlightEffect.iconFX = status;
+            highlightEffect.innerGlow = status ? 0.25f : 0f;
+        }
         public void SetColor(ChessColorEnum color)
         {
             colorEnum = color;

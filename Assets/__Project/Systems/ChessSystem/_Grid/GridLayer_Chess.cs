@@ -147,6 +147,8 @@ namespace __Project.Systems.ChessSystem._Grid
         {
             SelectedPiece = piece;
             List<Vector3Int> moves = SelectedPiece.GetAvailableMoves();
+            if (SelectedPiece)
+                SelectedPiece.OnSelected();
             ShowSelection(moves,piece);
         }
         
@@ -181,6 +183,9 @@ namespace __Project.Systems.ChessSystem._Grid
         
         public void DeselectPiece()
         {
+            if (SelectedPiece)
+                SelectedPiece.OnDeselected();
+
             SelectedPiece = null;
             selector.ClearSelection();
         }
