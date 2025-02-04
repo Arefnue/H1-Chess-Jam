@@ -31,11 +31,11 @@ MonoBehaviour:
   constantWidth: 1
   minimumWidth: 0
   overlay: 0
-  overlayMode: 0
-  overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  overlayAnimationSpeed: 1
-  overlayMinIntensity: 0.5
-  overlayBlending: 1
+  overlayMode: 10
+  overlayColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0.40392157}
+  overlayAnimationSpeed: 0.5
+  overlayMinIntensity: 0.139
+  overlayBlending: 0.324
   overlayTexture: {fileID: 0}
   overlayTextureUVSpace: 0
   overlayTextureScale: 1

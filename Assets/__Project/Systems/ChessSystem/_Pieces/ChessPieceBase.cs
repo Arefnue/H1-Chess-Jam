@@ -55,6 +55,7 @@ namespace __Project.Systems.ChessSystem._Pieces
 
             highlightEffect.iconFX = status;
             highlightEffect.innerGlow = status ? 0.25f : 0f;
+            highlightEffect.overlay = status ? 0.25f : 0f;
         }
         public void SetColor(ChessColorEnum color)
         {
