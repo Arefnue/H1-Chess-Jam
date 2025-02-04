@@ -31,15 +31,13 @@ namespace __Project.Systems.ChessSystem._Features
             
             RBuss.OnEvent<ChessREvents.PieceMoveFinishedREvent>().Subscribe(ev =>
             {
-                "C".NLog();
                 UpdateFeature();
+                if (ev.Piece.IsTeleported)
+                    return;
                 if (!CanTeleport())
                     return;
-                ev.Piece.OccupiedTilePosition.NLog(Color.yellow);
-                OccupiedTilePosition.NLog(Color.magenta);
                 if (GridLayerChess.IsPositionsMatched(ev.Piece.OccupiedTilePosition,OccupiedTilePosition))
                 {
-                    "xxxx".NLog();
                     Teleport(ev.Piece);
                 }
             }).AddTo(gameObject);
@@ -61,14 +59,12 @@ namespace __Project.Systems.ChessSystem._Features
         public bool CanTeleport()
         {
             if (MatchedTeleport == null)
-            {
                 return false;
-            }
-            if (GridLayerChess.IsPositionOccupied(OccupiedTilePosition))
-            {
-                return false;
-            }
-
+            // if (GridLayerChess.IsPositionOccupied(OccupiedTilePosition))
+            // {
+            //     return false;
+            // }
+            //
             if (GridLayerChess.IsPositionOccupied(MatchedTeleport.OccupiedTilePosition))
             {
                 return false;
@@ -79,11 +75,10 @@ namespace __Project.Systems.ChessSystem._Features
         private Sequence _sequence;
         public void Teleport(ChessPieceBase piece)
         {
-            "Tp".NLog();
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
-            _sequence.Append(transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 1, 0.2f));
-            _sequence.Join(MatchedTeleport.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 1, 0.2f));
+            _sequence.Append(transform.DOPunchScale(new Vector3(0.2f,0,0.2f), 0.5f, 1, 0.2f));
+            _sequence.Join(MatchedTeleport.transform.DOPunchScale(new Vector3(0.2f,0,0.2f), 0.5f, 1, 0.2f));
             _sequence.OnComplete(() =>
             {
                 transform.localScale = Vector3.one;

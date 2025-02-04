@@ -91,7 +91,8 @@ namespace __Project.Systems.ChessSystem._Pieces
         public virtual void Move(Vector3Int targetPos)
         {
             OccupiedTilePosition = targetPos;
-         
+            IsTeleported = false;
+
             RBuss.Publish(new ChessREvents.PieceMoveStartedREvent(this));
          
             MoveTween(targetPos).OnComplete(() =>
@@ -109,8 +110,10 @@ namespace __Project.Systems.ChessSystem._Pieces
             return transform.DOMove(finalDest,0.5f);
         }
         
+        public bool IsTeleported { get; set; }
         public virtual void Teleport(Vector3Int targetPos)
         {
+            IsTeleported = true;
             var targetPosition = GridLayer.GetNode(targetPos).GetNodePosition();
             OccupiedTilePosition = targetPos;
             var finalDest = GridLayer.Grid.GetCellCenterLocal(targetPosition);

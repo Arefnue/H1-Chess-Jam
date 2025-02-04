@@ -96,8 +96,6 @@ namespace __Project.Systems.ChessSystem._Grid
 
         public bool IsPositionsMatched(Vector3Int first, Vector3Int second)
         {
-            first.y = 0;
-            second.y = 0;
             return first == second;
         }
 
