@@ -1,4 +1,5 @@
 ﻿using System;
+using __Project.Systems.ChessSystem;
 using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using _NueCore.Common.Utility;
@@ -25,9 +26,15 @@ namespace __Project.Systems.LevelSystem._TimerSubSystem
             _isFinished = false;
             RBuss.OnEvent<LevelREvents.LevelSpawnedREvent>().Subscribe(ev =>
             {
+                //CurrentTimerRP = new FloatReactiveProperty();
                 Level = ev.LevelBase;
                 levelText.SetText($"Level {(Level.TargetLevel+1).ToString()}");
                 StartTimer();
+            }).AddTo(gameObject);
+            
+            RBuss.OnEvent<ChessREvents.AllPiecesFinishedREvent>().Subscribe(ev =>
+            {
+                StopTimer();
             }).AddTo(gameObject);
             
             CurrentTimerRP.Subscribe(value =>
@@ -74,7 +81,7 @@ namespace __Project.Systems.LevelSystem._TimerSubSystem
 
         public void StopTimer()
         {
-            IsTimerStarted = true;
+            IsTimerStarted = false;
             _timer?.Dispose();
         }
 

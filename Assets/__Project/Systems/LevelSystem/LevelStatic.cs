@@ -6,12 +6,14 @@ namespace __Project.Systems.LevelSystem
 {
     public static class LevelStatic
     {
+        
         public static BoolReactiveProperty IsInteractionEnabled { get; set; } = new BoolReactiveProperty(false);
 
         public static LevelBase CurrentLevel { get; private set; }
 
         public static void SetCurrentLevel(LevelBase level)
         {
+            IsInteractionEnabled = new BoolReactiveProperty(false);
             CurrentLevel = level;
         }
         public static int GetCurrentLevelNumber()

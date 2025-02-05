@@ -15,7 +15,7 @@ namespace __Project.Systems.ChessSystem
         public int ActiveStepCount { get; private set; }
         public void Build()
         {
-            
+            ActiveStepCount = 0;
         }
 
         public void LevelUp()
