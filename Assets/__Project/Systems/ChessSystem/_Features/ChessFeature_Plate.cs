@@ -2,6 +2,7 @@
 using System.Linq;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.ChessSystem._Pieces;
+using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -37,11 +38,7 @@ namespace __Project.Systems.ChessSystem._Features
             }
             RBuss.OnEvent<ChessREvents.PieceMoveFinishedREvent>().Subscribe(ev =>
             {
-              
-                // if (GridLayerChess.IsPositionsMatched(ev.Piece.OccupiedTilePosition,OccupiedTilePosition))
-                // {
-                //     OpenDoor(ev.Piece);
-                // }
+                
                 UpdateFeature();
             }).AddTo(gameObject);
         }
@@ -49,9 +46,11 @@ namespace __Project.Systems.ChessSystem._Features
         public override void UpdateFeature()
         {
             base.UpdateFeature();
-            if (GridLayerChess.IsPositionOccupied(TargetDoor.OccupiedTilePosition))
+            var piece =GridLayerChess.GetPiece(OccupiedTilePosition);
+            if (piece)
             {
                 if (IsDoorOpened) return;
+                "Opened".NLog();
                 TargetDoor.Open();
                 IsDoorOpened = true;
                 animator.SetTrigger("Press");
@@ -59,6 +58,7 @@ namespace __Project.Systems.ChessSystem._Features
             else
             {
                 if (!IsDoorOpened) return;
+                "Closed".NLog();
                 IsDoorOpened = false;
                 TargetDoor.Close();
                 animator.SetTrigger("UnPress");

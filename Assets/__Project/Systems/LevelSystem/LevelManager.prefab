@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 61367221378541018, guid: da08374410cdfc143bb2bc8caad57015, type: 3}
   - {fileID: 61367221378541018, guid: b0753f96748a6a442923dfeaa334634d, type: 3}
   - {fileID: 61367221378541018, guid: 1ca1ab3d73033da42a049d1f51f38c13, type: 3}
+  - {fileID: 61367221378541018, guid: 9fd45bfe379a466438f7e4aa0fcbd8ac, type: 3}
   loopLevelPrefabList:
   - {fileID: 61367221378541018, guid: a7dcc9a0f68a92244b8a7ff93426110d, type: 3}
   - {fileID: 61367221378541018, guid: 593086d035b66094686022d31a022d79, type: 3}

@@ -1,7 +1,9 @@
 ﻿using __Project.Systems.ChessSystem._Grid;
 using _NueCore.Common.NueLogger;
+using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using UniRx;
 using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Features
@@ -39,6 +41,17 @@ namespace __Project.Systems.ChessSystem._Features
 
             OccupiedTile = a.NTileBase;
             OccupiedTile.BlockWalk = true;
+            RBuss.OnEvent<ChessREvents.PieceMoveStartedREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
+            {
+                if (!IsOpened && !OccupiedTile.BlockWalk)
+                {
+                    if (!GridLayerChess.IsPositionOccupied(OccupiedTilePosition))
+                    {
+                        animator.SetTrigger("UnPress");
+                        OccupiedTile.BlockWalk = true;
+                    }
+                }
+            });
         }
         public void PlaceOnTile(Vector3Int pos)
         {
@@ -54,17 +67,23 @@ namespace __Project.Systems.ChessSystem._Features
             });
         }
 
+        public bool IsOpened { get; private set; }
         public void Open()
         {
+            IsOpened = true;
             OccupiedTile.BlockWalk = false;
-
-            animator.SetTrigger("Open");
+            animator.SetTrigger("Press");
         }
 
         public void Close()
         {
-            OccupiedTile.BlockWalk = true;
-            animator.SetTrigger("Close");
+            IsOpened = false;
+            if (!GridLayerChess.IsPositionOccupied(OccupiedTilePosition))
+            {
+                animator.SetTrigger("UnPress");
+                OccupiedTile.BlockWalk = true;
+            }
+           
         }
     }
 }
