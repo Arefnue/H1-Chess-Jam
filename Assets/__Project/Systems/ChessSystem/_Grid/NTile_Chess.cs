@@ -9,9 +9,17 @@ namespace __Project.Systems.ChessSystem._Grid
     {
         [SerializeField] private bool isWall;
 
+        
+        public bool BlockWalk { get; set; }
+        
         public override bool IsWalkable()
         {
             if (isWall)
+            {
+                return false;
+            }
+
+            if (BlockWalk)
             {
                 return false;
             }
