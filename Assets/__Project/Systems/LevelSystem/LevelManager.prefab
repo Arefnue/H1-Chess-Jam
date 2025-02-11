@@ -56,11 +56,13 @@ MonoBehaviour:
   - {fileID: 61367221378541018, guid: a7dcc9a0f68a92244b8a7ff93426110d, type: 3}
   - {fileID: 61367221378541018, guid: da08374410cdfc143bb2bc8caad57015, type: 3}
   - {fileID: 61367221378541018, guid: b0753f96748a6a442923dfeaa334634d, type: 3}
+  - {fileID: 61367221378541018, guid: 1ca1ab3d73033da42a049d1f51f38c13, type: 3}
   loopLevelPrefabList:
   - {fileID: 61367221378541018, guid: a7dcc9a0f68a92244b8a7ff93426110d, type: 3}
   - {fileID: 61367221378541018, guid: 593086d035b66094686022d31a022d79, type: 3}
   - {fileID: 61367221378541018, guid: b0753f96748a6a442923dfeaa334634d, type: 3}
   - {fileID: 61367221378541018, guid: da08374410cdfc143bb2bc8caad57015, type: 3}
+  - {fileID: 61367221378541018, guid: 1ca1ab3d73033da42a049d1f51f38c13, type: 3}
   levelSpawnRoot: {fileID: 7170103386778418689}
   winPopup: {fileID: 11400000, guid: cddfa2e687e2a6b4cabde9b95fac6fb7, type: 2}
   losePopup: {fileID: 11400000, guid: 0b2c77d7a68a4164da74c944500a43fa, type: 2}
