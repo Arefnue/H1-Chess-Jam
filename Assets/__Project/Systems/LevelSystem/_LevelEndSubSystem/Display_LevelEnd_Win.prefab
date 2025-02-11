@@ -568,6 +568,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 4368725038662416105}
   continueButton: {fileID: 5311559217832206818}
-  targetSfx: {fileID: 11400000, guid: 0ae871267e83e68419126e6e28c95ba0, type: 2}
+  targetSfx: {fileID: 11400000, guid: f3aaad45b19fd3c47a34c7849b18a3aa, type: 2}
   coinRewardText: {fileID: 8316215286368971385}
   colorRewardText: {fileID: 8822264865127491059}
