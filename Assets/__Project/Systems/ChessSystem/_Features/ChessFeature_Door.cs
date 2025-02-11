@@ -9,7 +9,6 @@ namespace __Project.Systems.ChessSystem._Features
     public class ChessFeature_Door : ChessFeatureBase
     {
         [SerializeField] private ChessColorEnum targetColor;
-        [SerializeField] private Renderer rend;
         [SerializeField] private Animator animator;
         
        

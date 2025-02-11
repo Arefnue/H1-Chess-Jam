@@ -13,7 +13,6 @@ namespace __Project.Systems.ChessSystem._Features
     public class ChessFeature_Plate : ChessFeatureBase
     {
         [SerializeField] private ChessColorEnum targetColor;
-        [SerializeField] private Renderer rend;
         [SerializeField] private Animator animator;
         
         #region Cache
@@ -55,14 +54,14 @@ namespace __Project.Systems.ChessSystem._Features
                 if (IsDoorOpened) return;
                 TargetDoor.Open();
                 IsDoorOpened = true;
-                animator.SetBool("Status",IsDoorOpened);
+                animator.SetTrigger("Press");
             }
             else
             {
                 if (!IsDoorOpened) return;
                 IsDoorOpened = false;
                 TargetDoor.Close();
-                animator.SetBool("Status",IsDoorOpened);
+                animator.SetTrigger("UnPress");
             }
             
         }
