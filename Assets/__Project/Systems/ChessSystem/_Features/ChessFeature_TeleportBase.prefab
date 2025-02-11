@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetColor: 0
   rend: {fileID: 7992552452508882314}
+  teleportSfx: {fileID: 11400000, guid: 236507861f964024a9259ff2fd8e12c4, type: 2}
 --- !u!1 &5971572776669391245
 GameObject:
   m_ObjectHideFlags: 0

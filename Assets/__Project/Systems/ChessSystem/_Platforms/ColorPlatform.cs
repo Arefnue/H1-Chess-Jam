@@ -1,6 +1,7 @@
 ﻿using System;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.ChessSystem._Pieces;
+using _NueCore.AudioSystem;
 using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
@@ -80,6 +81,7 @@ namespace __Project.Systems.ChessSystem._Platforms
 
             _isProcessing = true;
             piece.IgnoreInteraction = true;
+            AudioStatic.PlayFx(DefaultAudioDataTypes.Claim);
             GridLayerChess.RemovePiece(piece);
             piece.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
             {

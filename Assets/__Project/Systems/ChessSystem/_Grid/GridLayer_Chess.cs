@@ -4,6 +4,7 @@ using __Project.Systems.ChessSystem._Pieces;
 using __Project.Systems.ChessSystem._Platforms;
 using __Project.Systems.ChessSystem._Utils;
 using __Project.Systems.GridSystem;
+using _NueCore.AudioSystem;
 using UnityEngine;
 
 namespace __Project.Systems.ChessSystem._Grid
@@ -137,7 +138,8 @@ namespace __Project.Systems.ChessSystem._Grid
             {
                 return;
             }
-            
+            AudioStatic.PlayFx(DefaultAudioDataTypes.Click);
+
             SelectedPiece.Move(target);
             DeselectPiece();
         }
@@ -147,6 +149,7 @@ namespace __Project.Systems.ChessSystem._Grid
             List<Vector3Int> moves = SelectedPiece.GetAvailableMoves();
             if (SelectedPiece)
                 SelectedPiece.OnSelected();
+            AudioStatic.PlayFx(DefaultAudioDataTypes.Select);
             ShowSelection(moves,piece);
         }
         

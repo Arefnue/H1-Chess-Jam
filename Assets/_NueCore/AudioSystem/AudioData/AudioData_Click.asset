@@ -15,5 +15,5 @@ MonoBehaviour:
   audioID: AudioData_Click
   sourceType: 0
   targetClipList:
-  - {fileID: 8300000, guid: 8114817af99ab496298a6b2df6a160ec, type: 3}
+  - {fileID: 8300000, guid: d832f979f13bbb74f9ab5788009d5d0a, type: 3}
   playRandomly: 1

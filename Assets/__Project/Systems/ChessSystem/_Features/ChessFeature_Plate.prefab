@@ -199,6 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetColor: 0
   animator: {fileID: 6659555139247080359}
+  openSfx: {fileID: 11400000, guid: 8284f7577fad9b54dae433d5a33f2634, type: 2}
+  closeSfx: {fileID: 11400000, guid: 65a8d94f6b377e6429efa62f953271c3, type: 2}
 --- !u!95 &6659555139247080359
 Animator:
   serializedVersion: 7

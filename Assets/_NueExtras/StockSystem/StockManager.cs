@@ -16,7 +16,7 @@ namespace _NueExtras.StockSystem
             if (!save.IsFirstTimeStocksGiven)
             {
                 save.IsFirstTimeStocksGiven = true;
-                StockStatic.IncreaseStock(StockTypes.Coin,200);
+                //StockStatic.IncreaseStock(StockTypes.Coin,200);
             }
         }
         

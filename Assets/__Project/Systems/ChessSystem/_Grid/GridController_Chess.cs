@@ -4,6 +4,7 @@ using __Project.Systems.ChessSystem._Platforms;
 using __Project.Systems.ChessSystem._Utils;
 using __Project.Systems.GridSystem;
 using __Project.Systems.LevelSystem;
+using _NueCore.AudioSystem;
 using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using _NueCore.Common.Utility;
@@ -87,6 +88,12 @@ namespace __Project.Systems.ChessSystem._Grid
                 }
                
             }
+
+            if (chessLayer.SelectedPiece)
+            {
+                AudioStatic.PlayFx(DefaultAudioDataTypes.Deselect);
+            }
+
             chessLayer.DeselectPiece();
         }
     }

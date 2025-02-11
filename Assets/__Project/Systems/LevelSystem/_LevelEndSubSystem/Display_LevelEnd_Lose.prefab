@@ -119,3 +119,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 4368725038662416105}
   continueButton: {fileID: 5311559217832206818}
+  targetSfx: {fileID: 11400000, guid: 4daada1919f134c418efe47df6c21320, type: 2}

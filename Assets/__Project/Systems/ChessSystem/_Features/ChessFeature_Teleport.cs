@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.ChessSystem._Pieces;
+using _NueCore.AudioSystem;
 using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
@@ -14,6 +15,7 @@ namespace __Project.Systems.ChessSystem._Features
     {
         [SerializeField] private ChessColorEnum targetColor;
         [SerializeField] private Renderer rend;
+        [SerializeField] private AudioData teleportSfx;
         
         
         public ChessColorEnum TargetColor => targetColor;
@@ -75,6 +77,7 @@ namespace __Project.Systems.ChessSystem._Features
         private Sequence _sequence;
         public void Teleport(ChessPieceBase piece)
         {
+            teleportSfx?.Play();
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             _sequence.Append(transform.DOPunchScale(new Vector3(0.2f,0,0.2f), 0.5f, 1, 0.2f));

@@ -196,8 +196,7 @@ namespace _NueExtras.StockSystem
         }
 
         #endregion
-
-
+        
         #region Temp
         
         private static Dictionary<StockTypes, float> TempStockValuesDict { get; set; } =
@@ -253,6 +252,7 @@ namespace _NueExtras.StockSystem
         }
 
         #endregion
+        
         #region Operations
 
         public static float GetStock(StockTypes targetType)

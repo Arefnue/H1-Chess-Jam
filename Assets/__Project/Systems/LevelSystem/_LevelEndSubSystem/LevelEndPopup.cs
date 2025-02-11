@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using _NueCore.AudioSystem;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,8 @@ namespace __Project.Systems.LevelSystem._LevelEndSubSystem
     {
         [SerializeField] private TMP_Text levelText;
         [SerializeField] private Button continueButton;
-        
+        [SerializeField] private AudioData targetSfx;
+
         
         public virtual void Build(LevelEndInfo levelEndInfo)
         {
@@ -17,6 +19,10 @@ namespace __Project.Systems.LevelSystem._LevelEndSubSystem
                 levelEndInfo.OnContinueButtonClickedAction?.Invoke();
             });
             levelText.SetText(levelText.text.Replace("#level", (levelEndInfo.Level+1).ToString()));
+            if (targetSfx)
+            {
+                targetSfx.Play();
+            }
         }
     }
 }

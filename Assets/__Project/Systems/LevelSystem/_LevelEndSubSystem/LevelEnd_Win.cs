@@ -1,4 +1,5 @@
-﻿using _NueCore.Common.Utility;
+﻿using _NueCore.AudioSystem;
+using _NueCore.Common.Utility;
 using _NueExtras.StockSystem;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace __Project.Systems.LevelSystem._LevelEndSubSystem
     {
         [SerializeField] private TMP_Text coinRewardText;
         [SerializeField] private TMP_Text colorRewardText;
+      
         public override void Build(LevelEndInfo levelEndInfo)
         {
             base.Build(levelEndInfo);
@@ -21,7 +23,8 @@ namespace __Project.Systems.LevelSystem._LevelEndSubSystem
                 perValue = count / 10;
                 count = 10;
             }
-            
+
+           
             StockStatic.SpawnStock(StockTypes.Coin, count,perValue);
             var text = reward + SpriteHelper.GetStockSpriteText(StockTypes.Coin);
             coinRewardText.SetText(coinRewardText.text.Replace("#reward", text));

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using __Project.Systems.ChessSystem._Grid;
 using __Project.Systems.ChessSystem._Pieces;
+using _NueCore.AudioSystem;
 using _NueCore.Common.NueLogger;
 using _NueCore.Common.ReactiveUtils;
 using DG.Tweening;
@@ -16,6 +17,9 @@ namespace __Project.Systems.ChessSystem._Features
     {
         [SerializeField] private ChessColorEnum targetColor;
         [SerializeField] private Animator animator;
+        [SerializeField] private AudioData openSfx;
+        [SerializeField] private AudioData closeSfx;
+        
         
         #region Cache
         public ChessColorEnum TargetColor => targetColor;
@@ -59,6 +63,7 @@ namespace __Project.Systems.ChessSystem._Features
             if (piece)
             {
                 if (IsDoorOpened) return;
+                openSfx?.Play();
                 foreach (var door in TargetDoorList)
                 {
                     door.Open();
@@ -69,6 +74,8 @@ namespace __Project.Systems.ChessSystem._Features
             else
             {
                 if (!IsDoorOpened) return;
+                closeSfx?.Play();
+
                 IsDoorOpened = false;
                 foreach (var door in TargetDoorList)
                 {
