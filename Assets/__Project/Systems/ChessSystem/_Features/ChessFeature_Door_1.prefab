@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessFeature_Door_1
       objectReference: {fileID: 0}
+    - target: {fileID: 4931884432406756608, guid: 821c374e425ff50419cab5fea32eb1ce, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c30c8d502df564eb6ab7b65b5629615c, type: 3}
     - target: {fileID: 7109768361635797296, guid: 821c374e425ff50419cab5fea32eb1ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

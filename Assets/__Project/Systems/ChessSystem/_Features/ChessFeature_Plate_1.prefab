@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1728043882399097128, guid: e7f081dc55ed9be409fd80d0c0141a3e, type: 3}
       propertyPath: targetColor
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1398522262466424251, guid: e7f081dc55ed9be409fd80d0c0141a3e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c30c8d502df564eb6ab7b65b5629615c, type: 3}
     - target: {fileID: 2004968414334724819, guid: e7f081dc55ed9be409fd80d0c0141a3e, type: 3}
       propertyPath: m_Name
       value: ChessFeature_Plate_1
