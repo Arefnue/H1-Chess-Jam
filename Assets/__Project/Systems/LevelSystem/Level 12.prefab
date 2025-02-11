@@ -2850,11 +2850,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: coinReward
-      value: 4
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: levelDuration
-      value: 180
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: missionStepList.Array.size

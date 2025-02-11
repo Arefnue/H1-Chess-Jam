@@ -53,6 +53,7 @@ namespace __Project.Systems.ChessSystem._Features
                 }
             });
         }
+
         public void PlaceOnTile(Vector3Int pos)
         {
             OccupiedTilePosition = pos;

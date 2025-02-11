@@ -87,6 +87,12 @@ namespace __Project.Systems.LevelSystem
             LoadNextLevel();
         }
 
+        public void Restart()
+        {
+            LoadNextLevel();
+
+        }
+
         private void LoadNextLevelWithFader()
         {
             var faderParams = new NFader.FaderParams

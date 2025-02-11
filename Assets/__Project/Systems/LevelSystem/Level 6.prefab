@@ -2989,11 +2989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: coinReward
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: levelDuration
-      value: 180
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 6114725928730095097, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: missionStepList.Array.size
@@ -3005,23 +3005,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.34
+      value: 11.15
       objectReference: {fileID: 0}
     - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.88
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8947683
+      value: 0.83652014
       objectReference: {fileID: 0}
     - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.44653088
+      value: 0.54793614
       objectReference: {fileID: 0}
     - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 53.043
+      value: 66.451
       objectReference: {fileID: 0}
     - target: {fileID: 6401133719708330697, guid: 632d8486bc935db449d7f2e6614178f1, type: 3}
       propertyPath: m_ConstrainProportionsScale

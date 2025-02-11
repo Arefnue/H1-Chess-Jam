@@ -49,6 +49,7 @@ namespace __Project.Systems.ChessSystem._Features
                 {
                     door.SetDoor(this);
                 }
+                GridLayerChess.UpdateLayer();
             }, false);
             RBuss.OnEvent<ChessREvents.PieceMoveFinishedREvent>().Subscribe(ev =>
             {
