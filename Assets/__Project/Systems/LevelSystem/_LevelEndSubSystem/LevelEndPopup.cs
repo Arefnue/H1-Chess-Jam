@@ -16,6 +16,7 @@ namespace __Project.Systems.LevelSystem._LevelEndSubSystem
         {
             continueButton.onClick.AddListener(()=>
             {
+                AudioStatic.PlayFx(DefaultAudioDataTypes.Click);
                 levelEndInfo.OnContinueButtonClickedAction?.Invoke();
             });
             levelText.SetText(levelText.text.Replace("#level", (levelEndInfo.Level+1).ToString()));
