@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _NueCore.Common.Extensions;
+using Lofelt.NiceVibrations;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace _NueCore.AudioSystem
         [SerializeField] private AudioSourceTypes sourceType;
         [SerializeField] private List<AudioClip> targetClipList;
         [SerializeField] private bool playRandomly;
+        [SerializeField] private HapticPatterns.PresetType hapticType;
 
         #region Cache
         
@@ -26,6 +28,8 @@ namespace _NueCore.AudioSystem
         
         public void Play()
         {
+            AudioStatic.PlayHaptic(hapticType);
+
             if (playRandomly)
             {
                 AudioManager.Instance.PlayOneShot(targetClipList.RandomItem(),sourceType);

@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2428324849779489496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1627232935774776383}
+  - component: {fileID: 8612270978789642241}
+  - component: {fileID: 2164048890551537618}
+  m_Layer: 0
+  m_Name: HapticManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1627232935774776383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428324849779489496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8612270978789642241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428324849779489496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870d0a3fd9cb43b5956ef4909c8fdfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hapticClipDict:
+    keyValuePairs:
+    - key: -1
+      value: {fileID: -8404250095460277587, guid: 4baac4364aeb5514babc0b86b4129006,
+        type: 3}
+    - key: 0
+      value: {fileID: -8404250095460277587, guid: 43d1519bc8029a24088e9d4104e36f78,
+        type: 3}
+    - key: 1
+      value: {fileID: -8404250095460277587, guid: 3939ccf951ebbc74199b48a3f479fd51,
+        type: 3}
+    - key: 2
+      value: {fileID: -8404250095460277587, guid: 91265cf1b632b6a459e8fb9846d68de9,
+        type: 3}
+    - key: 3
+      value: {fileID: -8404250095460277587, guid: 4729d0f1e9de9b9409c7d0c12c3688aa,
+        type: 3}
+    - key: 4
+      value: {fileID: -8404250095460277587, guid: 7eeece17f280a7a489f0772d7d5f9eba,
+        type: 3}
+    - key: 5
+      value: {fileID: -8404250095460277587, guid: ee8841ee61654834e8f990594bfdadf3,
+        type: 3}
+    - key: 6
+      value: {fileID: -8404250095460277587, guid: 277e9ea1f814ce34eb4569d58e5df3c7,
+        type: 3}
+    - key: 7
+      value: {fileID: -8404250095460277587, guid: 47f9637ecab3b3a47836f2a040c4cad8,
+        type: 3}
+    - key: 8
+      value: {fileID: -8404250095460277587, guid: 7db47f9c6d152b14bbf1b5b15719595a,
+        type: 3}
+--- !u!114 &2164048890551537618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428324849779489496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb29a83998eb4949bc0a9c8e5662fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outputLevel: 1
+  _hapticsEnabled: 1
