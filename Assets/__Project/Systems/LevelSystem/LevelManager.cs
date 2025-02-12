@@ -27,10 +27,13 @@ namespace __Project.Systems.LevelSystem
 
         private PopupDisplay _popup;
 
+        public static LevelManager Instance { get; private set; }
+        
         #region Setup
 
         public override void NAwake()
         {
+            Instance = InitSingleton<LevelManager>();
             base.NAwake();
             timeController.Build();
             RBuss.OnEvent<LevelREvents.LevelWonREvent>().TakeUntilDisable(gameObject).Subscribe(ev =>
@@ -81,7 +84,7 @@ namespace __Project.Systems.LevelSystem
         #region Methods
 
         [Button]
-        private void LevelUp()
+        public void LevelUp()
         {
             LevelStatic.LevelUp();
             LoadNextLevel();

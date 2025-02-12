@@ -1,4 +1,5 @@
-﻿using _NueCore.Common.ReactiveUtils;
+﻿using __Project.Systems.LevelSystem;
+using _NueCore.Common.ReactiveUtils;
 using _NueCore.ManagerSystem.Core;
 using _NueCore.SaveSystem;
 using _NueExtras.StockSystem;
@@ -71,7 +72,7 @@ namespace _NueExtras.CheatSystem
   
             levelButton.onClick.AddListener(() =>
             {
-              
+                LevelManager.Instance.LevelUp();
             });
             
             resetSaveButton.onClick.AddListener(() =>

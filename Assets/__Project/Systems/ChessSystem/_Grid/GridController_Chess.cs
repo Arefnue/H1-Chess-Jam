@@ -67,6 +67,11 @@ namespace __Project.Systems.ChessSystem._Grid
             {
                 return;
             }
+
+            if (UIHelper.IsMouseOverUI())
+            {
+                return;
+            }
             if (CastHelper.TryRayCast(out var hit,ray,1000,pieceLayer))
             {
                 var ht = hit.collider.attachedRigidbody;
